@@ -7,7 +7,6 @@ const jwtAuth = require('../middlewares/jwtAuth');
 const keys = require('../configurations/keys');
 
 router.post('/register', jwtAuth , async (req, res) =>{
-
     let packages = new Expenses({
     name : req.body.name,
     companyUuid : req.body.companyUuid,
