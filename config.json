@@ -1,0 +1,9 @@
+{
+    "mongo": {
+      "host" : "ds121373.mlab.com",
+      "port" : "21373",
+      "database" : "projectmanagement",
+      "username" : "transpk",
+      "password" : "transpk222" 
+    }
+}
