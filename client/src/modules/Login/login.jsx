@@ -22,19 +22,18 @@ const Login = (props) => {
     async function login(values, setSubmitting) {
         try {
             let res = await getToken(values);
+            console.log('res',res);
             setSubmitting(false);
-            if (res.meta.status >= 200 && res.meta.status < 300) {
+            console.log(res.status);
+            if (res.token) {
                 seterrorStatus("success");
                 seterrormsg(LOGIN_SUCCESSFULL);
-                auth.login(res.data.token.token, () => {
-                    if (values && values.remember) {
-                        localStorage.setItem('remember', values.remember);
-                    }
-                    props.history.push('/dashboard');
+                auth.login(res.token, () => {
+                    props.history.push('/customers');
                 });
             } else {
                 seterrorStatus("error");
-                seterrormsg(ICORRECT_EMAIL)
+                seterrormsg(res.error)
             }
         } catch (error) {
             seterrorStatus("error");

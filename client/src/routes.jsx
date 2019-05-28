@@ -16,7 +16,7 @@ const createRoutes = () => (
             <Route exact={true} path="/" component={Login} />
            
        
-            <Route exact={true} path="/team" component={Team} />
+            <Route exact={true} path="/customers" component={Team} />
            
         </Switch>
     </Suspense>

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import TeamsList from "./list";
 import api from './../../Api'
 import {setAuthHeaders} from "../../Api/setauthHeaders";
-import {deltTeamUserService, getTeams, inviteUser} from './services';
+import {deltTeamUserService, getCustomers, inviteUser} from './services';
 import {inviteValidationSchema} from "../Login/validation";
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -44,15 +44,15 @@ const Team = (props) => {
 
     }
 
-    async function fetchTeam(options={
+    async function fetchCustomers(options={
         limit:10,
         page:1
     }) {
         try {
-            let res = await getTeams(options);
-            if (res.meta.status >= 200 && res.meta.status < 300) {
-                setPagination(res.data);
-                setTeamMembers(res.data.docs);
+            let res = await getCustomers();
+            console.log(res)
+            if (res.status >= 200 && res.status < 300) {
+                setTeamMembers(res.data);
                 setmapTeams(!mapTeams);
             }
         } catch (err) {
@@ -78,7 +78,7 @@ const Team = (props) => {
     }
 
     useEffect(() => {
-        fetchTeam();
+        fetchCustomers();
     }, []);
 
     const [teamMembers, setTeamMembers] = useState([]);
@@ -191,7 +191,7 @@ const Team = (props) => {
                                             </table>
                                         </div>
                                     </div>
-                                    {pagination && pagination.totalPages?<Pagination handleClick={fetchTeam} {...pagination}/>:null}
+                                    {pagination && pagination.totalPages?<Pagination handleClick={getCustomers} {...pagination}/>:null}
                                 </div>
                             </div>
                         </div>
