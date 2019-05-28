@@ -1,0 +1,454 @@
+div#root, .kt-grid.kt-grid--ver.kt-grid--root.main-div {
+    height: 100%;
+}
+
+
+.kt-login.kt-login--v1 .kt-login__aside {
+    /*width:605px;*/
+    padding: 3rem 3.5rem;
+    background-repeat: no-repeat;
+    background-size: cover
+}
+
+.kt-login.kt-login--v1 .kt-login__aside .kt-login__logo {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex
+}
+
+.kt-login.kt-login--v1 .kt-login__aside .kt-login__title {
+    
+       
+        font-family: Poppins;
+        font-size: 32px;
+        font-weight: 600;
+        font-style: normal;
+        font-stretch: normal;
+        /* line-height: 1.86; */
+        letter-spacing: normal;
+        color: #ffffff;
+      
+}
+
+.kt-login.kt-login--v1 .kt-login__aside .kt-login__subtitle {
+       
+        font-family: Poppins;
+        font-size: 18px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: rgba(245, 245, 249, 0.7);
+      
+}
+
+.kt-login.kt-login--v1 .kt-login__aside .kt-login__info {
+    /* display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between; */
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: 0 auto;
+}
+
+.kt-login.kt-login--v1 .kt-login__aside .kt-login__info .kt-login__menu>a {
+    text-decoration: none;
+    color: #fff;
+    padding: 5px;
+    /* margin-right: 1.3rem; */
+    display: inline-block;
+    font-family: Poppins;
+    /* font-size: 16px; */
+    font-weight: 300;
+    letter-spacing: normal;
+    color: rgba(245, 245, 249, 0.7);
+      }
+
+
+.kt-login.kt-login--v1 .kt-login__aside .kt-login__info .kt-login__menu>a:hover {
+    color: #fff
+}
+
+.kt-login.kt-login--v1 .kt-login__aside .kt-login__info .kt-login__menu>a:hover:after {
+    border-bottom: 1px solid #fff;
+    opacity: 0.3
+}
+
+.kt-login.kt-login--v1 .kt-login__aside .kt-login__info .kt-login__menu>a:last-child {
+    margin-right: 0
+}
+
+.kt-login.kt-login--v1 .kt-login__aside .kt-login__info .kt-login__copyright , a.kt-link-footer{
+    
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: flex-start;
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 300;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: rgba(245, 245, 249, 0.4);
+        /* margin-right: 2rem; */
+}
+a.kt-link-footer:hover{
+    color: rgba(245, 245, 249, 0.4);
+}
+.kt-login__menu{
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: flex-end;
+}
+
+.kt-login.kt-login--v1 .kt-login__wrapper {
+    padding: 3rem 3rem;
+    background: #fff
+}
+.kt-grid__item.kt-grid__item--order-tablet-and-mobile-2.kt-grid.kt-grid--hor.kt-login__aside{
+    min-width: 600px;
+}
+.kt-login.kt-login--v1 .kt-login__wrapper .kt-login__head {
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    margin-top:30px;
+}
+button#kt_login_signin_submit {
+    font-weight: 300;
+    background-color:  #4355FF;
+    box-shadow: 0 4px 16px 0 rgba(67, 85, 255, 0.15);
+}
+.kt-login.kt-login--v1 .kt-login__wrapper .kt-login__head .kt-login__signup-label {
+    font-family: Poppins;
+
+    font-size: 16px;
+    color: #8b97ad;
+    font-weight:300;
+    
+}
+
+
+.kt-login.kt-login--v1 .kt-login__wrapper .kt-login__head .kt-login__signup-link {
+    font-family: Poppins;
+    font-size: 16px;
+    color: #8b97ad;
+     font-weight:500;
+     
+}
+label.kt-checkbox.box{
+    font-weight: 200;
+    font-size: 16px;
+    color: #8b97ad;
+}
+.kt-login.kt-login--v1 .kt-login__wrapper .kt-login__body {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 100%
+}
+
+.kt-login.kt-login--v1 .kt-login__wrapper .kt-login__body .kt-login__form {
+    width: 100%;
+    max-width: 450px
+}
+
+.kt-login.kt-login--v1 .kt-login__wrapper .kt-login__body .kt-login__form .kt-login__title {
+    display: block;
+    text-align: left;
+    text-decoration: none;
+    margin: 25px 0px;
+}
+
+.kt-login.kt-login--v1 .kt-login__wrapper .kt-login__body .kt-login__form .kt-login__title>h3 {
+    
+   
+        
+        font-family: Poppins;
+        font-size: 32px;
+        font-weight: 500;
+        font-style: normal;
+        font-stretch: normal;
+        /* line-height: normal; */
+        letter-spacing: normal;
+       
+        color: #676675;
+        margin: 0px;
+      
+}
+
+.kt-divider > span:not(:first-child):not(:last-child){
+   padding: 0px 0.6rem !important;
+    font-size: 16px;
+  font-weight: 200;
+  color: #8b97ad;
+}
+
+/*.kt-login.kt-login--v1 .kt-login__wrapper .kt-login__body .kt-login__form .kt-form{margin:4rem auto}*/
+
+.kt-login.kt-login--v1 .kt-login__wrapper .kt-login__body .kt-login__form .kt-form .form-group {
+    margin: 0;
+    padding: 0;
+    margin: 0 auto
+}
+
+.kt-login.kt-login--v1 .kt-login__wrapper .kt-login__body .kt-login__form .kt-form .form-group .form-control {
+    /*border: none;*/
+    /*height: 50px;
+   
+    background-color: rgba(247, 247, 249, 0.7);
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    -webkit-transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease */
+  margin-top: 1.25rem;
+  border-radius: 4px;
+  background-color: rgba(246, 246, 249, 0.7);
+}
+
+.kt-login.kt-login--v1 .kt-login__wrapper .kt-login__body .kt-login__form .kt-form .form-group .form-control:focus {
+    -webkit-transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease;
+    background-color: #f7f7f9
+}
+.kt-email.kt-email--v1 .kt-email__wrapper .kt-email__body .kt-email__form .kt-email__actions .kt-email__btn-secondary, .kt-email.kt-email--v1
+ .kt-email__wrapper .kt-email__body .kt-email__form .kt-email__actions .kt-email__btn-primary{
+    border-radius: 4px;
+    box-shadow: 0 4px 16px 0 rgba(67, 85, 255, 0.15);
+    background-color: #4355ff;
+ }
+
+.kt-login.kt-login--v1 .kt-login__wrapper .kt-login__body .kt-login__form .kt-login__actions {
+    /*display:-webkit-box;display:-ms-flexbox;/*display:flex;*/
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    text-align: center;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    /*margin:3rem 0*/
+}
+
+.kt-login.kt-login--v1 .kt-login__wrapper .kt-login__body .kt-login__form .kt-login__actions .kt-login__link-forgot {
+    color: #a7abc3
+}
+
+.kt-login.kt-login--v1 .kt-login__wrapper .kt-login__body .kt-login__form .kt-login__actions .kt-login__link-forgot:hover {
+    color: #5d78ff
+}
+
+.kt-login.kt-login--v1 .kt-login__wrapper .kt-login__body .kt-login__form .kt-login__actions .kt-login__link-forgot:hover:after {
+    border-bottom: 1px solid #5d78ff;
+    opacity: 0.3
+}
+
+.kt-login.kt-login--v1 .kt-login__wrapper .kt-login__body .kt-login__form .kt-login__actions .kt-login__btn-secondary,
+.kt-login.kt-login--v1 .kt-login__wrapper .kt-login__body .kt-login__form .kt-login__actions .kt-login__btn-primary {
+ 
+    padding-left: 2.5rem;
+    padding-right: 2.5rem
+}
+
+.kt-login.kt-login--v1 .kt-login__wrapper .kt-login__body .kt-login__form .kt-login__divider {
+    margin: 0px;
+    font-weight: 200;
+    font-size: 16px;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #8b97ad;
+}
+
+.kt-login.kt-login--v1 .kt-login__wrapper .kt-login__body .kt-login__form .kt-login__divider:not(:first-child):not(:last-child) {
+    font-weight: 400;
+    color: #b5b2c3;
+    font-size: 1rem
+}
+
+.kt-login.kt-login--v1 .kt-login__wrapper .kt-login__body .kt-login__form .kt-login__options {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    max-width: 100%;
+   
+}
+
+.kt-login.kt-login--v1 .kt-login__wrapper .kt-login__body .kt-login__form .kt-login__options>a {
+    text-decoration: none;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.kt-login.kt-login--v1 .kt-login__wrapper .kt-login__body .kt-login__form .kt-login__options>a:not(:first-child):not(:last-child) {
+    margin: 0 1.5rem
+}
+
+@media (min-width: 1025px) {
+    .kt-login.kt-login--v1 .kt-login__aside {
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+    }
+}
+
+@media (max-width: 1024px) {
+    .kt-login.kt-login--v1 .kt-login__aside {
+        width: 100%;
+        height: auto;
+        padding: 2rem 1.5rem
+    }
+    .kt-login.kt-login--v1 .kt-login__aside .kt-login__logo {
+        margin-bottom: 2.5rem
+    }
+    .kt-login.kt-login--v1 .kt-login__aside .kt-login__info {
+        margin-top: 2rem
+    }
+    .kt-login.kt-login--v1 .kt-login__aside .kt-login__subtitle {
+        margin: 2rem 0
+    }
+    .kt-login.kt-login--v1 .kt-login__wrapper {
+        padding: 3rem 1.5rem
+    }
+    .kt-login.kt-login--v1 .kt-login__wrapper .kt-login__head {
+        padding-left: 2rem;
+        right: 2rem;
+    }
+    .kt-login.kt-login--v1 .kt-login__wrapper .kt-login__body {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        margin-top: 5rem
+    }
+    .kt-login.kt-login--v1 .kt-login__wrapper .kt-login__body .kt-login__form .kt-login__options>a:not(:first-child):not(:last-child) {
+        margin: 0 0.8rem
+    }
+}
+
+.form-group .link-style {
+    text-align: right;
+}
+
+@media only screen and (max-width: 600px) {
+    .form-group .link-style {
+        text-align: left;
+    }
+}
+
+.form-group .label-style {
+    padding-left: 0.5rem;
+    font-family: Poppins;
+  font-size: 16px;
+  font-weight: 200;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #8b97ad;
+}
+.kt-remember {
+    margin-top: 15px;
+}
+
+.form-group .link-style .kt-link {
+  
+        
+        height: 23px;
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 200;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #8b97ad;
+    
+}
+
+/*.kt-login.kt-login--v1 .kt-login__aside {
+    width: 468px;
+}*/
+
+
+/*kt-login.kt-login--v1 .kt-login__wrapper .kt-login__body .kt-login__form .kt-login__actions {
+  text-align: center;
+      display: block;
+
+} */
+.kt-login.kt-login--v1 .kt-login__wrapper .kt-login__body .kt-login__form .kt-login__title .kt_subtitle {
+
+
+        font-family: Poppins;
+        font-size: 18px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #9b9b9b;
+      }
+      .kt-btn {
+        margin: 30px 22px;
+    }
+    
+    .kt-divider>span:not(:first-child):not(:last-child){
+        padding: 0 0.5rem;
+       
+ 
+    }
+
+
+/*.kt-login.kt-login--v1 .kt-login__wrapper .kt-login__head {
+	display: block;
+
+    text-align: center;
+}*/
+
+
+/*.kt-login.kt-login--v1 .kt-login__wrapper .kt-login__body .kt-login__form {
+
+    margin-top: 20%;
+}*/
+
+
+/*.kt-login__copyright {
+    margin-right: 1rem;
+}*/

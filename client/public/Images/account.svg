@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>User</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Profile" transform="translate(-28.000000, -245.000000)" fill="#494B74">
+            <g id="Fefault-/-Sidebar-Expanded">
+                <g id="Sidebar-Menu-/-Sub-level" transform="translate(0.000000, 100.000000)">
+                    <g id="Account" transform="translate(0.000000, 132.000000)">
+                        <g id="Group-3" transform="translate(28.000000, 12.000000)">
+                            <g id="User" transform="translate(0.000000, 1.000000)">
+                                <path d="M9,8 C6.790861,8 5,6.209139 5,4 C5,1.790861 6.790861,0 9,0 C11.209139,0 13,1.790861 13,4 C13,6.209139 11.209139,8 9,8 Z" id="Mask" opacity="0.3"></path>
+                                <path d="M0.00065168,17.1992055 C0.38825852,12.4265159 4.26191235,10 8.9833413,10 C13.7712164,10 17.7048837,12.2931929 17.9979143,17.2 C18.0095879,17.3954741 17.9979143,18 17.2466999,18 C13.541124,18 8.0347247,18 0.72750223,18 C0.47671215,18 -0.02046175,17.45918 0.00065168,17.1992055 Z" id="Mask-Copy"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

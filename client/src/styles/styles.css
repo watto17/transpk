@@ -1,0 +1,24 @@
+/*global theme*/
+@import "./theme/style.bundle.css";
+@import "./theme/vendors.bundle.css";
+@import "./style.css";
+/*login style*/
+@import "login.default.css";
+/*email*/
+@import "./email.default.css";
+/*register*/
+@import "./register.default.css";
+/*404*/
+@import "error-v6.default.css";
+
+/* sendEmail ui changes */
+.error-class{
+    width: 73%;
+    margin-top: -4px !important;
+}
+.editEmailInput{
+    justify-content: center;
+    width: 25%;
+    display: -webkit-inline-box;
+    height: 50px !important;
+}

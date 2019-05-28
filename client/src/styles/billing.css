@@ -1,0 +1,28 @@
+.kt-portlet__head-toolbar.pay-btn{
+    position: absolute;
+    left: auto;
+    right: 50px;
+}
+
+.btn-burgr{
+    background-color: transparent;
+    color: white;
+}
+.show>.btn.btn-burgr,  .btn.btn-clean:active, .btn.btn-clean:hover{
+
+ background: transparent;
+}
+.kt-payment-method{
+    border-bottom: 0px solid !important;
+}
+.add-payment-card{
+    width: 224px;
+    background: rgba(67,85,255,0.05);
+    height: 155px;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed  #4355ff;
+   
+    box-shadow: 1px 6px 21px- 7px rgba(0,0,0,0.2);
+    cursor: pointer;
+}

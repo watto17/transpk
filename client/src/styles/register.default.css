@@ -1,0 +1,382 @@
+
+.kt-register.kt-register--v1 .kt-register__aside {
+    /*width:605px;*/
+    padding: 3rem 3.5rem;
+    background-repeat: no-repeat;
+    background-size: cover
+}
+
+.kt-register.kt-register--v1 .kt-register__aside .kt-register__logo {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex
+}
+
+.kt-register.kt-register--v1 .kt-register__aside .kt-register__title {
+    font-family: Poppins;
+    font-size: 32px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    /* line-height: 1.86; */
+    letter-spacing: normal;
+    color: #ffffff;
+}
+
+.kt-register.kt-register--v1 .kt-register__aside .kt-register__subtitle {
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: rgba(245, 245, 249, 0.7);
+}
+
+.kt-register.kt-register--v1 .kt-register__aside .kt-register__info {
+    /* display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between; */
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: 0 auto;
+}
+
+.kt-register.kt-register--v1 .kt-register__aside .kt-register__info .kt-register__menu>a {
+    text-decoration: none;
+    color: #fff;
+    /* margin-right: 1.3rem; */
+    display: inline-block;
+    padding: 5px;
+        font-family: Poppins;
+        /* font-size: 16px; */
+        font-weight: 300;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: rgba(245, 245, 249, 0.7);
+}
+.kt-register__menu{
+display: flex;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: flex-end;
+
+}
+.kt-register.kt-register--v1 .kt-register__aside .kt-register__info .kt-register__menu>a:hover {
+    color: #fff;
+}
+
+.kt-register.kt-register--v1 .kt-register__aside .kt-register__info .kt-register__menu>a:hover:after {
+    border-bottom: 1px solid #fff;
+    opacity: 0.3;
+}
+
+.kt-register.kt-register--v1 .kt-register__aside .kt-register__info .kt-register__menu>a:last-child {
+    margin-right: 0;
+}
+
+.kt-register.kt-register--v1 .kt-register__aside .kt-register__info .kt-register__copyright, a.kt-register-footer {
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: rgba(245, 245, 249, 0.4);
+    margin-right: 2rem;
+}
+a.kt-register-footer:hover {
+    color: rgba(245, 245, 249, 0.4);
+}
+.kt-register.kt-register--v1 .kt-register__wrapper {
+    padding: 3rem 3rem;
+    background: #fff;
+}
+
+.kt-register.kt-register--v1 .kt-register__wrapper .kt-register__head {
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    /*text-align:right*/
+}
+
+.kt-register.kt-register--v1 .kt-register__wrapper .kt-register__head .kt-register__signup-label {
+    font-family: Poppins;
+    color: #8b97ad;
+    font-size:16px;
+    font-weight: 300;
+    font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+
+    
+}
+
+.kt-register.kt-register--v1 .kt-register__wrapper .kt-register__head .kt-register__signup-link {
+    font-family: Poppins;
+    color: #8b97ad;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.kt-register.kt-register--v1 .kt-register__wrapper .kt-register__body {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height:100%;
+}
+
+.kt-register.kt-register--v1 .kt-register__wrapper .kt-register__body .kt-register__form {
+    width: 100%;
+    max-width: 450px;
+}
+
+.kt-register.kt-register--v1 .kt-register__wrapper .kt-register__body .kt-register__form .kt-register__title {
+    display: block;
+    text-align: left;
+    /*margin-bottom:5rem;*/
+    text-decoration: none;
+}
+
+.kt-register.kt-register--v1 .kt-register__wrapper .kt-register__body .kt-register__form .kt-register__title>h3 {
+    color: #676675;
+    font-size: 32px;
+    font-weight: 500;
+    text-align: left !important;
+}
+.kt-register.kt-register--v1 .kt-register__wrapper .kt-register__body .kt-register__form .kt-register__title>span{
+    display: block;
+    font-size: 18px;
+    color: #9B9B9B;
+   
+    text-align: left;
+}
+
+/* .kt-register.kt-register--v1 .kt-register__wrapper .kt-register__body .kt-register__form .kt-form {
+    margin:0.5rem auto;
+} */
+
+
+.kt-register.kt-register--v1 .kt-register__wrapper .kt-register__body .kt-register__form .kt-form .form-group {
+    margin: 0;
+    padding: 0;
+    margin: 0 auto;
+}
+
+.kt-register.kt-register--v1 .kt-register__wrapper .kt-register__body .kt-register__form .kt-form .form-group .form-control {
+   /* border: none;
+    height: 50px; */
+    margin-top: 1.1rem;
+    background-color: rgba(247, 247, 249, 0.7);
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    -webkit-transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease;
+}
+
+.kt-register.kt-register--v1 .kt-register__wrapper .kt-register__body .kt-register__form .kt-form .form-group .form-control:focus {
+    -webkit-transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease;
+    background-color: #f7f7f9;
+}
+
+.kt-register.kt-register--v1 .kt-register__wrapper .kt-register__body .kt-register__form .kt-register__actions {
+    /*display:-webkit-box;display:-ms-flexbox;*/
+    /*display:flex;*/
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    text-align: center;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    /*margin:2rem 0*/
+}
+
+.kt-register.kt-register--v1 .kt-register__wrapper .kt-register__body .kt-register__form .kt-register__actions .kt-register__link-forgot {
+    color: #a7abc3;
+}
+
+.kt-register.kt-register--v1 .kt-register__wrapper .kt-register__body .kt-register__form .kt-register__actions .kt-register__link-forgot:hover {
+    color: #5d78ff
+}
+
+.kt-register.kt-register--v1 .kt-register__wrapper .kt-register__body .kt-register__form .kt-register__actions .kt-register__link-forgot:hover:after {
+    border-bottom: 1px solid #5d78ff;
+    opacity: 0.3
+}
+
+.kt-register.kt-register--v1 .kt-register__wrapper .kt-register__body .kt-register__form .kt-register__actions .kt-register__btn-secondary,
+.kt-register.kt-register--v1 .kt-register__wrapper .kt-register__body .kt-register__form .kt-register__actions .kt-register__btn-primary {
+   /* height: 50px; */
+    padding-left: 2.5rem;
+    padding-right: 2.5rem
+}
+
+.kt-register.kt-register--v1 .kt-register__wrapper .kt-register__body .kt-register__form .kt-register__divider {
+    margin: 1rem 0 1rem 0
+}
+
+.kt-register.kt-register--v1 .kt-register__wrapper .kt-register__body .kt-register__form .kt-register__divider:not(:first-child):not(:last-child) {
+    font-weight: 400;
+    color: #b5b2c3;
+    font-size: 1rem
+}
+
+.kt-register.kt-register--v1 .kt-register__wrapper .kt-register__body .kt-register__form .kt-register__options {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    max-width: 100%
+}
+
+.kt-register.kt-register--v1 .kt-register__wrapper .kt-register__body .kt-register__form .kt-register__options>a {
+    text-decoration: none;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex
+}
+
+.kt-register.kt-register--v1 .kt-register__wrapper .kt-register__body .kt-register__form .kt-register__options>a:not(:first-child):not(:last-child) {
+    margin: 0 1.5rem
+}
+.row-style label{
+    color: #9B9B9B;
+}
+
+@media (min-width: 1025px) {
+    .kt-register.kt-register--v1 .kt-register__aside {
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1
+    }
+}
+
+@media (max-width: 1024px) {
+    .kt-register.kt-register--v1 .kt-register__aside {
+        width: 100%;
+        height: auto;
+        padding: 2rem 1.5rem
+    }
+    .kt-register.kt-register--v1 .kt-register__aside .kt-register__logo {
+        margin-bottom: 2.5rem
+    }
+    .kt-register.kt-register--v1 .kt-register__aside .kt-register__info {
+        margin-top: 2rem
+    }
+    .kt-register.kt-register--v1 .kt-register__aside .kt-register__subtitle {
+        margin: 2rem 0
+    }
+    .kt-register.kt-register--v1 .kt-register__wrapper {
+        padding: 3rem 1.5rem
+    }
+    .kt-register.kt-register--v1 .kt-register__wrapper .kt-register__head {
+        padding-left: 2rem;
+        right: 2rem
+    }
+    .kt-register.kt-register--v1 .kt-register__wrapper .kt-register__body {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+    .kt-register.kt-register--v1 .kt-register__wrapper .kt-register__body .kt-register__form .kt-register__options>a:not(:first-child):not(:last-child) {
+        margin: 0 0.8rem
+    }
+}
+
+.form-group .row.row-style{
+   
+    margin-bottom: 0px;
+}
+.kt-btn {
+    margin: 30px 22px;
+}
+
+.kt-divider>span:not(:first-child):not(:last-child){
+    padding: 0 0.5rem;
+}
+.style-signup-btn{
+    margin-top: 30px;
+}
+.row.row-style .kt-link{
+    color: #676675;
+}  
+.kt-grid__item.kt-grid__item--order-tablet-and-mobile-2.kt-grid.kt-grid--hor.kt-register__aside{
+    min-width: 600px;
+}
+.row-style>.col-md-12>label.label-styling {
+    font-size: 16px;
+    font-weight: 300;
+}
+.row-style>.col-md-12>a.link-styling{
+    font-size: 16px;
+    font-weight: 500;
+}
+/*.kt-register.kt-register--v1 .kt-register__aside {
+    width: 468px;
+}*/
+
+
+/*kt-register.kt-register--v1 .kt-register__wrapper .kt-register__body .kt-register__form .kt-register__actions {
+  text-align: center;
+      display: block;
+
+}
+.kt-register.kt-register--v1 .kt-register__wrapper .kt-register__body .kt-register__form .kt-register__title {
+
+    margin-bottom: 0rem;
+}*/
+
+
+/*.kt-register.kt-register--v1 .kt-register__wrapper .kt-register__head {
+	display: block;
+
+    text-align: center;
+}*/
+
+
+/*.kt-register.kt-register--v1 .kt-register__wrapper .kt-register__body .kt-register__form {
+
+    margin-top: 20%;
+}*/
+
+
+/*.kt-register__copyright {
+    margin-right: 1rem;
+}*/
