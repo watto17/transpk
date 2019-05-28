@@ -4,7 +4,7 @@ import Spinner from './Components/molecules/loader';
 
 const Login = lazy(() => (import('./modules/Login/login')));
 
-const Team  = lazy(() => (import('./modules/Teams')));
+const Team  = lazy(() => (import('./modules/Customer')));
 
 
 
@@ -16,7 +16,7 @@ const createRoutes = () => (
             <Route exact={true} path="/" component={Login} />
            
        
-            <ProtectedRoute exact={true} path="/team" component={Team} />
+            <Route exact={true} path="/team" component={Team} />
            
         </Switch>
     </Suspense>

@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import ProfileSideBar from '../ProfileSidebar';
 import TeamsList from "./list";
 import api from './../../Api'
 import {setAuthHeaders} from "../../Api/setauthHeaders";
@@ -109,8 +108,7 @@ const Team = (props) => {
                 <div className="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
                     <h5 className="account-text">Account</h5>
                     <div className="row">
-                        <ProfileSideBar {...props} />
-                        <div className="col-lg-9">
+                        <div className="col-lg-12">
                             <div
                                 className="kt-portlet kt-portlet--last kt-portlet--head-lg kt-portlet--responsive-mobile"
                                 id="kt_page_portlet">
