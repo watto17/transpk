@@ -18,13 +18,18 @@ export const changeRoleService = async (role, tUserId) => {
 
 }
 export const inviteUser = async (values) => {
+  
+
+}
+export const getExpenses = async (body) => {
+
   try{
-    let result = await Api.Get(FETCH_EXPENSES);
-    return result.data;
-}
-catch(error){
-    return error
-}
+    let data =  await Api.Get(FETCH_EXPENSES);
+    return data
+    }
+    catch(error){
+        return error
+    }
 
 
 }

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import PackageList from "./list";
 import api from './../../Api'
 import {setAuthHeaders} from "../../Api/setauthHeaders";
-import {deltTeamUserService, getTeams, inviteUser} from './services';
+import {deltTeamUserService, getPackage, inviteUser} from './services';
 import {inviteValidationSchema} from "../Login/validation";
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -44,15 +44,16 @@ const Packages = (props) => {
 
     }
 
-    async function fetchTeam(options={
+    async function fetchPackage(options={
         limit:10,
         page:1
     }) {
         try {
-            let res = await getTeams(options);
-            if (res.meta.status >= 200 && res.meta.status < 300) {
+            let res = await getPackage(options);
+            console.log(res);
+            if (res.status >= 200 && res.status < 300) {
                 setPagination(res.data);
-                setTeamMembers(res.data.docs);
+                setTeamMembers(res.data);
                 setmapTeams(!mapTeams);
             }
         } catch (err) {
@@ -78,7 +79,7 @@ const Packages = (props) => {
     }
 
     useEffect(() => {
-        fetchTeam();
+        fetchPackage();
     }, []);
 
     const [teamMembers, setTeamMembers] = useState([]);
@@ -155,21 +156,21 @@ const Packages = (props) => {
                                             <table className="kt-datatable__table table">
                                                 <thead className="kt-datatable__head">
                                                 <tr className="kt-datatable__row">
-                                                    <th data-field="TeamMember"
+                                                <th data-field="TeamMember"
                                                         className="kt-datatable__cell kt-datatable__cell--sort "><span
-                                                        style={{width: '200px'}}>Team Member</span></th>
+                                                        style={{width: '200px'}}>Company Id</span></th>
                                                     <th data-field="InvitedDate"
                                                         className="kt-datatable__cell kt-datatable__cell--sort"><span
-                                                        style={{width: '80px'}}>Invited Date</span></th>
+                                                        style={{width: '80px'}}>Name</span></th>
                                                     <th data-field="Status"
                                                         className="kt-datatable__cell kt-datatable__cell--sort"><span
-                                                        style={{width: '70px'}}>Status</span></th>
-                                                    <th data-field="Role"
+                                                        style={{width: '70px'}}>Price</span></th>
+                                                        <th data-field="Role"
                                                         className="kt-datatable__cell kt-datatable__cell--sort">
-                                                        <span style={{width: '70px'}}>Role</span></th>
-                                                    <th data-field="Action"
+                                                        <span style={{width: '70px'}}>Edit</span></th>
+                                                        <th data-field="Role"
                                                         className="kt-datatable__cell kt-datatable__cell--sort">
-                                                        <span style={{width: '70px'}}></span></th>
+                                                        <span style={{width: '70px'}}>delete</span></th>
                                                 </tr>
                                                 </thead>
                                                 <tbody className="kt-datatable__body" style={{}}>
@@ -191,7 +192,7 @@ const Packages = (props) => {
                                             </table>
                                         </div>
                                     </div>
-                                    {pagination && pagination.totalPages?<Pagination handleClick={fetchTeam} {...pagination}/>:null}
+                                    {pagination && pagination.totalPages?<Pagination handleClick={fetchPackage} {...pagination}/>:null}
                                 </div>
                             </div>
                         </div>

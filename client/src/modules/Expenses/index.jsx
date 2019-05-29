@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import ExpenseList from "./list";
 import api from './../../Api'
 import {setAuthHeaders} from "../../Api/setauthHeaders";
-import {deltTeamUserService, getTeams, inviteUser} from './services'; 
+import {deltTeamUserService, getTeams, inviteUser,getExpenses} from './services'; 
 import {inviteValidationSchema} from "../Login/validation";
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -13,7 +13,10 @@ import '../../styles/teams.css';
 import Pagination from "../../Components/molecules/Pagination";
 
 const Expenses = (props) => {
-    async function deleteUser(id) {
+    const [teamMembers, setTeamMembers] = useState([]);
+    const [mapTeams, setmapTeams] = useState(false);
+    const [pagination,setPagination]=useState({});
+    async function deleteUser(id) { 
         try {
             let res = await deltTeamUserService(id);
             const remainingMembers = teamMembers.filter(function (item, index) {
@@ -44,17 +47,18 @@ const Expenses = (props) => {
 
     }
 
-    async function fetchTeam(options={
+    async function fetchExpense(options={
         limit:10,
         page:1
     }) {
         try {
-            let res = await getTeams(options);
-            if (res.meta.status >= 200 && res.meta.status < 300) {
-                setPagination(res.data);
-                setTeamMembers(res.data.docs);
+            let res = await getExpenses(options);
+            if (res.status >= 200 && res.status < 300) {
+                setTeamMembers(res.data);
                 setmapTeams(!mapTeams);
             }
+            console.log("expense ",res)
+
         } catch (err) {
             console.log(err);
         }
@@ -78,12 +82,10 @@ const Expenses = (props) => {
     }
 
     useEffect(() => {
-        fetchTeam();
+        fetchExpense();
     }, []);
 
-    const [teamMembers, setTeamMembers] = useState([]);
-    const [mapTeams, setmapTeams] = useState(false);
-    const [pagination,setPagination]=useState({});
+    
     return (
       <Dashboard>
         <Formik
@@ -155,21 +157,21 @@ const Expenses = (props) => {
                                             <table className="kt-datatable__table table">
                                                 <thead className="kt-datatable__head">
                                                 <tr className="kt-datatable__row">
-                                                    <th data-field="TeamMember"
+                                                <th data-field="TeamMember"
                                                         className="kt-datatable__cell kt-datatable__cell--sort "><span
-                                                        style={{width: '200px'}}>Team Member</span></th>
+                                                        style={{width: '200px'}}>Company Id</span></th>
                                                     <th data-field="InvitedDate"
                                                         className="kt-datatable__cell kt-datatable__cell--sort"><span
-                                                        style={{width: '80px'}}>Invited Date</span></th>
+                                                        style={{width: '80px'}}>Description</span></th>
                                                     <th data-field="Status"
                                                         className="kt-datatable__cell kt-datatable__cell--sort"><span
-                                                        style={{width: '70px'}}>Status</span></th>
-                                                    <th data-field="Role"
+                                                        style={{width: '70px'}}>Amount</span></th>
+                                                        <th data-field="Role"
                                                         className="kt-datatable__cell kt-datatable__cell--sort">
-                                                        <span style={{width: '70px'}}>Role</span></th>
-                                                    <th data-field="Action"
+                                                        <span style={{width: '70px'}}>Edit</span></th>
+                                                        <th data-field="Role"
                                                         className="kt-datatable__cell kt-datatable__cell--sort">
-                                                        <span style={{width: '70px'}}></span></th>
+                                                        <span style={{width: '70px'}}>delete</span></th>
                                                 </tr>
                                                 </thead>
                                                 <tbody className="kt-datatable__body" style={{}}>
@@ -191,7 +193,7 @@ const Expenses = (props) => {
                                             </table>
                                         </div>
                                     </div>
-                                    {pagination && pagination.totalPages?<Pagination handleClick={fetchTeam} {...pagination}/>:null}
+                                    {pagination && pagination.totalPages?<Pagination handleClick={fetchExpense} {...pagination}/>:null}
                                 </div>
                             </div>
                         </div>

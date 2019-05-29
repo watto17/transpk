@@ -1,9 +1,18 @@
 import axios from 'axios';
 import {setAuthHeaders} from '../../Api/setauthHeaders';
 import Api from '../../Api/index';
+import {FETCH_PACKAGES} from '../../Api/endpoints';
 
-export const getTeams = async (body) => {
 
+export const getPackage = async (body) => {
+
+  try{
+    let data= await Api.Get(FETCH_PACKAGES) 
+    return data;
+  }
+  catch(error){
+    return error;
+  }
 
 
 
