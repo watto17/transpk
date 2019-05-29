@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {deltTeamUserService, changeRoleService} from './services';
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import {Link} from 'react-router-dom';
 export default function TeamsList(props) {
     const [roledrpdwn, setroledrpdwn] = useState(false)
    async function deleteUser(id){
@@ -29,35 +29,29 @@ export default function TeamsList(props) {
                 <div className="kt-user-card-v2">
                     <div className="kt-user-card-v2__pic">
                         <div
-                            className="kt-badge kt-badge--xl kt-badge--warning">{props && props.firstName?props.firstName[0].toUpperCase():''}</div>
+                            className="kt-badge kt-badge--xl kt-badge--warning">{props && props.name?props.name[0].toUpperCase():''}</div>
                     </div>
                     <div className="kt-user-card-v2__details">
                         <span
-                            className="kt-user-card-v2__name">{props.firstName} {props.lastName}</span>
-                        <a className="kt-user-card-v2__email kt-link"
-                           href="#">{props.email}</a>
+                            className="kt-user-card-v2__name">{props.name}</span>
+                       
                     </div>
                 </div>
             </span>
             </td>
             <td data-field="InvitedDate" className="kt-datatable__cell">
-                <span style={{width: '80px'}}>5/11/2019</span></td>
-            <td data-field="Status" className="kt-datatable__cell">
+                <span style={{width: '80px'}}>{props && props.contact}</span></td>
+                <td data-field="InvitedDate" className="kt-datatable__cell">
+                <span style={{width: '80px'}}>{props && props.debit}</span></td>
+                <td data-field="InvitedDate" className="kt-datatable__cell">
+                <span style={{width: '80px'}}>{props && props.credit}</span></td>
+ 
+            <td data-field="Action" className="kt-datatable__cell">
         <span style={{width: '70px'}}>
-            <button type="button"
-                    className={`btn btn-sm btn-bold   ${props.isVerified ? 'btn-label-success' : 'btn-label-brand'} `}>{props.isVerified ? 'Active' : 'Invited'}
-            </button>
+            <Link to={`/editCustomers/${props && props.uuid}`} className="btn-cursor" title="eidt">
+                <button className="btn btn-success">Edit</button>
+            </Link>
             </span>
-            </td>
-            <td className="kt-datatable__cell">
-  <Dropdown id="drpdwn" isOpen={roledrpdwn} toggle={showRoleDropDown}>
-        <DropdownToggle style={{width:'80px'}} caret   className="btn btn-bold btn-sm label-brandd">
-         {props.role === 'admin' ?'Admin':'Member'}
-        </DropdownToggle>
-        <DropdownMenu className="innerDrp"    style={{padding: '0px'}}>
-            {props.role === 'admin' ? <DropdownItem color="work"  onClick={() => changeRoleApi('user',props._id,props.TeamIndex)}>Member</DropdownItem> : <DropdownItem  onClick={() => changeRoleApi('admin',props._id,props.TeamIndex)}>Admin</DropdownItem> }
-        </DropdownMenu>
-      </Dropdown>
             </td>
             <td data-field="Action" className="kt-datatable__cell">
         <span style={{width: '70px'}}>

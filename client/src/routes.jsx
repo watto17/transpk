@@ -3,8 +3,9 @@ import React, { Suspense, lazy } from "react";
 import Spinner from './Components/molecules/loader';
 
 const Login = lazy(() => (import('./modules/Login/login')));
-
 const Team  = lazy(() => (import('./modules/Customer')));
+const addCustomer  = lazy(() => (import('./modules/Customer/addCustomer')));
+const editCustomers  = lazy(() => (import('./modules/Customer/editCustomer')));
 
 
 
@@ -14,9 +15,9 @@ const createRoutes = () => (
         <Switch>
             
             <Route exact={true} path="/" component={Login} />
-           
-       
             <Route exact={true} path="/customers" component={Team} />
+            <Route exact={true} path="/addCustomers" component={addCustomer} />
+            <Route exact={true} path="/editCustomers/:id" component={editCustomers} />
            
         </Switch>
     </Suspense>

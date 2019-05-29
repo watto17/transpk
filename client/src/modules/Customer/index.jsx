@@ -50,7 +50,7 @@ const Team = (props) => {
     }) {
         try {
             let res = await getCustomers();
-            console.log(res)
+            console.log(res.data)
             if (res.status >= 200 && res.status < 300) {
                 setTeamMembers(res.data);
                 setmapTeams(!mapTeams);
@@ -116,9 +116,9 @@ const Team = (props) => {
                                     <div className="kt-portlet__head kt-portlet__head--lg">
                                         <div className="kt-portlet__head-label">
                                             <h3 className="kt-portlet__head-title">
-                                                Team
-                                            </h3>
-                                            <span className="kt-txt-style">Manage all your team members</span>
+                                                
+                            Cusotmers                                            </h3>
+                                            <span className="kt-txt-style">Manage all your Customers</span>
                                         </div>
                                     </div>
                                     <form onSubmit={handleSubmit} action="#" noValidate className="kt-portlet__body kt-form-section">
@@ -157,19 +157,22 @@ const Team = (props) => {
                                                 <tr className="kt-datatable__row">
                                                     <th data-field="TeamMember"
                                                         className="kt-datatable__cell kt-datatable__cell--sort "><span
-                                                        style={{width: '200px'}}>Team Member</span></th>
+                                                        style={{width: '200px'}}>Name</span></th>
                                                     <th data-field="InvitedDate"
                                                         className="kt-datatable__cell kt-datatable__cell--sort"><span
-                                                        style={{width: '80px'}}>Invited Date</span></th>
+                                                        style={{width: '80px'}}>Contact</span></th>
                                                     <th data-field="Status"
                                                         className="kt-datatable__cell kt-datatable__cell--sort"><span
-                                                        style={{width: '70px'}}>Status</span></th>
+                                                        style={{width: '70px'}}>debit</span></th>
                                                     <th data-field="Role"
                                                         className="kt-datatable__cell kt-datatable__cell--sort">
-                                                        <span style={{width: '70px'}}>Role</span></th>
-                                                    <th data-field="Action"
+                                                        <span style={{width: '70px'}}>credit</span></th>
+                                                        <th data-field="Role"
                                                         className="kt-datatable__cell kt-datatable__cell--sort">
-                                                        <span style={{width: '70px'}}></span></th>
+                                                        <span style={{width: '70px'}}>Edit</span></th>
+                                                        <th data-field="Role"
+                                                        className="kt-datatable__cell kt-datatable__cell--sort">
+                                                        <span style={{width: '70px'}}>delete</span></th>
                                                 </tr>
                                                 </thead>
                                                 <tbody className="kt-datatable__body" style={{}}>

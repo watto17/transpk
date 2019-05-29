@@ -28,6 +28,18 @@ router.post('/register', jwtAuth , async (req, res) =>{
 })
 
 
+router.get('/getDetails/:id' , jwtAuth , async (req, res) => {
+
+Customer.findOne({uuid : req.params.id}).then(customer => {
+    if(!customer){
+        return res.status(404).json({error : "Customer not found"})
+    }
+    return res.status(200).json(customer);
+}).catch(err =>{
+    return res.status(400).json(err);
+})
+
+})
 
 router.get('/get-customers', jwtAuth , async (req,res) => {
     Customer.find().then(packs => {
