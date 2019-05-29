@@ -18,11 +18,11 @@ export function showToaster({data},show,errorMsg){
             "showMethod": "fadeIn",
             "hideMethod": "fadeOut"
         };
-        if(data && data.meta && data.meta.status>=200 && data && data.meta && data.meta.status<300){
-            toastr.success(data.meta.message);
+        if(data  && data.status>=200 && data && data.status<300){
+            toastr.success(data.message);
         }
         else{
-            toastr.error(data && data.meta && data.meta.message?data.meta.message:errorMsg);
+            toastr.error(data  && data.message?data.message:errorMsg);
         }
 
     }

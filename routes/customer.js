@@ -28,7 +28,7 @@ router.post('/register', jwtAuth , async (req, res) =>{
 })
 
 
-router.get('/getDetails/:id' , jwtAuth , async (req, res) => {
+router.get('/get-customer-details/:id' , jwtAuth , async (req, res) => {
 
 Customer.findOne({uuid : req.params.id}).then(customer => {
     if(!customer){
@@ -50,7 +50,7 @@ router.get('/get-customers', jwtAuth , async (req,res) => {
     })
 });
 
-router.put('/update-customers/:id', jwtAuth , async(req, res) => {
+router.put('/update-customer/:id', jwtAuth , async(req, res) => {
 
 
     let customerFields = {};
@@ -64,6 +64,7 @@ router.put('/update-customers/:id', jwtAuth , async(req, res) => {
     let history = {}
     
     if(req.body.month) history.month = req.body.month
+    if(req.body.paymentDate) history.paymentDate = req.body.paymentDate
     customerFields.history = history
 
     Customer.findOne({uuid : req.params.id}).then(pack => {

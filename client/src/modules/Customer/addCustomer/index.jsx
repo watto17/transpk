@@ -10,6 +10,7 @@ export default function index() {
             let res = await getpackages();
             if(res.status >= 200 && res.status < 300){
                 setPackages(res.data);
+                
 
             }
            
@@ -22,8 +23,11 @@ export default function index() {
     async function addCustomer(values, setSubmitting) {
         try {
          
+        let today = new Date();
+        values.month = today.getMonth()+1;
+        values.paymentDate = today.getDate();
+
             let res = await addCustomers(values);
-            console.log('res' , res.data)
             setSubmitting(false);
            
         } catch (err) {

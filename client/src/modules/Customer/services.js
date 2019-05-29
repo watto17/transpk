@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {setAuthHeaders} from '../../Api/setauthHeaders';
 import Api from '../../Api/index';
-import {FETCH_COMPANIES , FETCH_PACKAGES , ADD_CUSTOMER ,EDIT_CUSTOMER} from '../../Api/endpoints';
+import {FETCH_COMPANIES , FETCH_PACKAGES , ADD_CUSTOMER ,EDIT_CUSTOMER , UPDATE_CUSTOMER} from '../../Api/endpoints';
 
 export const getCustomers = async (body) => {
 
@@ -40,10 +40,23 @@ export const addCustomers = async (body) => {
         return error
     }
 }
+export const updateCustomer = async (body,id) => {
+
+    try{
+    let data =  await Api.Put(UPDATE_CUSTOMER+id,JSON.stringify(body));
+   
+    return data;
+   
+    }
+    catch(error){
+        return error
+    }
+}
+
 export const editCustomer = async (id) => {
 
     try{
-    let data =  await Api.Get(EDIT_CUSTOMER+'4bd6b034-5213-4321-93a4-0fdc04bae564');
+    let data =  await Api.Get(EDIT_CUSTOMER+id);
     return data;
    
     }
