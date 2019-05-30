@@ -5,23 +5,7 @@ export default function TeamsList(props) {
     const [roledrpdwn, setroledrpdwn] = useState(false)
    async function deleteUser(id){
         props.deleteUser(id)  }
-    function showRoleDropDown() {
-        setroledrpdwn(!roledrpdwn);
-    }
 
-    async function changeRoleApi(role, id) {
-        let data = await changeRoleService(role, id);
-        props.onClick(role, id)
-    }
-   function showRoleDropDown(){
-    setroledrpdwn(!roledrpdwn);
-   }
-   async function changeRoleApi(role,id,index) {
-       let data = await changeRoleService(role,id);
-       props.onClick(role,index);
-       setroledrpdwn(false);
-    
-   }
     return (
         <tr data-row={0} className="kt-datatable__row">
             <td data-field="TeamMember" className="kt-datatable__cell ">
@@ -55,7 +39,7 @@ export default function TeamsList(props) {
             </td>
             <td data-field="Action" className="kt-datatable__cell">
         <span style={{width: '70px'}}>
-            <a className="btn-cursor" title="Delete" onClick={() => deleteUser(props._id)}>
+            <a className="btn-cursor" title="Delete" onClick={() => deleteUser(props.uuid)}>
                 <i style={{fontSize:'19px'}} className="la la-trash-o text-danger" aria-hidden="true"/>
             </a>
             </span>

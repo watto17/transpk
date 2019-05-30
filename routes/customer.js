@@ -7,6 +7,8 @@ const router  = express.Router();
 const jwtAuth = require('../middlewares/jwtAuth');
 const keys = require('../configurations/keys');
 mongoose.set('useCreateIndex', true);
+
+//ADD NEW  CUSTOMER
 router.post('/register', jwtAuth , async (req, res) =>{
 
     let history = {};
@@ -28,7 +30,7 @@ router.post('/register', jwtAuth , async (req, res) =>{
     })
 })
 
-
+// GET CUSTOMER DETAILS
 router.get('/get-customer-details/:id' , jwtAuth , async (req, res) => {
 
 Customer.findOne({uuid : req.params.id}).then(customer => {
@@ -51,6 +53,8 @@ router.get('/get-customers', jwtAuth , async (req,res) => {
     })
 });
 
+
+// UPDATE CUSTOMER
 router.put('/update-customer/:id', jwtAuth , async(req, res) => {
 
 
@@ -178,6 +182,8 @@ try{
 
 // })
 
+
+// REMOVE CUSTOERS API
 router.delete('/removeCustomers/:id',jwtAuth , async (req, res) =>{
     Customer.findOne({uuid : req.params.id }).then(packs =>{
     if(!packs){

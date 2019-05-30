@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'
-import TeamsList from "./list";
+import CustomerList from "./list";
 import api from './../../Api'
 import {setAuthHeaders} from "../../Api/setauthHeaders";
-import {deltTeamUserService, getCustomers, inviteUser} from './services';
+import {deleteCustomersService, getCustomers, inviteUser} from './services';
 import {inviteValidationSchema} from "../Login/validation";
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -15,34 +15,17 @@ import Pagination from "../../Components/molecules/Pagination";
 const Team = (props) => {
     async function deleteUser(id) {
         try {
-            let res = await deltTeamUserService(id);
-            const remainingMembers = teamMembers.filter(function (item, index) {
-                return item._id != id;
-            });
-            setTeamMembers(remainingMembers);
-            setmapTeams(!mapTeams);
+            
+            let res = await deleteCustomersService(id);
+            console.log('data deleted successfully',res.data)
+            setmapCustomer(!mapCustomer);
 
         } catch (error) {
             console.log(error);
         }
     }
 
-    async function changeRoleCurrent(role,index){
-    
-
-        let allTeams = teamMembers;
-      
-        delete allTeams[index].role ;
-        allTeams[index].role = role;
-      
-        setTeamMembers(allTeams);
-        setmapTeams(!mapTeams);
-        
-        
-    }
-    async function mapItems(){
-
-    }
+   
 
     async function fetchCustomers(options={
         limit:10,
@@ -52,60 +35,27 @@ const Team = (props) => {
             let res = await getCustomers();
             if (res.status >= 200 && res.status < 300) {
                 setTeamMembers(res.data);
-                setmapTeams(!mapTeams);
+                setmapCustomer(!mapCustomer);
             }
         } catch (err) {
             console.log(err);
         }
     }
 
-    async function sendInvite(values, setSubmitting) {
-        try {
-            if(props && props.firstName) {
-                values.firstName=props.firstName;
-                values.lastName=props.lastName;
-            }
-            var res=await inviteUser(values);
-            if(res.meta.status>=200 && res.meta.status<300){
-                teamMembers.push(res.data);
-                setTeamMembers(teamMembers);
-            }
-            setSubmitting(false);
-        } catch (error) {
-            console.log(error)
-        }
-    }
+   
 
     useEffect(() => {
         fetchCustomers();
     }, []);
 
     const [teamMembers, setTeamMembers] = useState([]);
-    const [mapTeams, setmapTeams] = useState(false);
+    const [mapCustomer, setmapCustomer] = useState(false);
     const [pagination,setPagination]=useState({});
     return (
       <Dashboard>
-        <Formik
-            initialValues={{email: ''}}
-            onSubmit={async (values, {setSubmitting}) => {
-                sendInvite(values, setSubmitting);
-            }}
-            validationSchema={inviteValidationSchema}>{(formikProps) => {
-            const {
-                values,
-                touched,
-                errors,
-                dirty,
-                isSubmitting,
-                handleChange,
-                setFieldValue,
-                handleBlur,
-                handleSubmit,
-                handleReset,
-            } = formikProps;
-            return (
+  
                 <div className="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
-                    <h5 className="account-text">Account</h5>
+                    <h5 className="account-text">Accounts</h5>
                     <div className="row">
                         <div className="col-lg-12">
                             <div
@@ -155,15 +105,15 @@ const Team = (props) => {
                                                 </thead>
                                                 <tbody className="kt-datatable__body" style={{}}>
                                                 {
-                                                 mapTeams ? 
+                                                 mapCustomer ? 
                                                 teamMembers.map((item, i) => {
                                                         return (
-                                                            <TeamsList key={i} {...item} currentRole={item} TeamIndex={i} onClick={changeRoleCurrent} deleteUser={deleteUser} />
+                                                            <CustomerList key={i} {...item} currentRole={item} TeamIndex={i}  deleteUser={deleteUser} />
                                                         )
                                                 }) : 
                                                 teamMembers.map((item, i) => {
                                                     return (
-                                                        <TeamsList key={i} {...item} currentRole={item} TeamIndex={i} onClick={changeRoleCurrent} deleteUser={deleteUser} />
+                                                        <CustomerList key={i} {...item} currentRole={item} TeamIndex={i}  deleteUser={deleteUser} />
                                                     )
                                                 })
                                                 }
@@ -180,10 +130,7 @@ const Team = (props) => {
                 </div>
                
 
-            )
-        }}
-
-        </Formik>
+           
       
 </Dashboard>
     )

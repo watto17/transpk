@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {setAuthHeaders} from '../../Api/setauthHeaders';
 import Api from '../../Api/index';
-import {FETCH_COMPANIES , FETCH_PACKAGES , ADD_CUSTOMER ,EDIT_CUSTOMER , UPDATE_CUSTOMER, UPDATE_PAYMENT} from '../../Api/endpoints';
+import {FETCH_COMPANIES , FETCH_PACKAGES , ADD_CUSTOMER ,EDIT_CUSTOMER , UPDATE_CUSTOMER, UPDATE_PAYMENT, DEL_CUSTOMER} from '../../Api/endpoints';
 
 export const getCustomers = async (body) => {
 
@@ -84,16 +84,15 @@ export const editCustomer = async (id) => {
 
 
 
-export const deltTeamUserService = async (userId) => {
- 
+export const deleteCustomersService = async (userId) => {
 
-
-}
-export const changeRoleService = async (role, tUserId) => {
-
-}
-export const inviteUser = async (values) => {
-
-
+    try{
+        let data =  await Api.Delete(DEL_CUSTOMER+userId);
+        return data;
+       
+        }
+        catch(error){
+            return error
+        }
 
 }
