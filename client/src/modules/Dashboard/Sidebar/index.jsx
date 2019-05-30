@@ -17,7 +17,7 @@ const sidebar=(props)=> {
   <div className="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
     <div id="kt_aside_menu" className="kt-aside-menu kt-scroll ps" data-ktmenu-vertical={1} data-ktmenu-scroll={1} data-ktmenu-dropdown-timeout={500} style={{height: '1308px', overflow: 'hidden'}}>
       <ul className="kt-menu__nav ">
-        <li className={`kt-menu__item ${pathname === '/dashboard' ? 'kt-menu__item--active' : '' } `} aria-haspopup="true"><Link to='/dashboard'
+        <li className={`kt-menu__item ${pathname === '/customers' ? 'kt-menu__item--active' : '' } `} aria-haspopup="true"><Link to='/customers'
         className="kt-menu__link"><span className="kt-menu__link-icon">
               <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" className="kt-svg-icon">
                 <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
