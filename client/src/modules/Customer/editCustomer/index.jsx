@@ -1,7 +1,7 @@
 import React , {useEffect , useState , useRef} from 'react';
 import {Formik} from 'formik';
 import Dashboard from '../../Dashboard/dashboard1';
-import {editCustomer , getpackages , updateCustomer} from '../services';
+import {editCustomer , getpackages , updateCustomer , UpdatePaymentService} from '../services';
 
 
 export default function index(props) {
@@ -63,13 +63,39 @@ let paymentInput
       else if(d === 'payspayAsPackage'){
        
         setpaymentmsg('');
+        let today = new  Date();
+             let month = today.getMonth()+1;
+             let paymentDate = today.getDate();
+            
+             let values = {
+                 month : month,
+                 paymentDate : paymentDate,
+                 
+             }
+             let res = await UpdatePaymentService(values,uuid,'payAsPackage');
+        console.log('res pay pkg only' , res.data);
+        
 
       }
       else if(d === 'addCustomAmount'){
         if(paymentInput.value === '') {
             paymentInput.focus();
             setpaymentmsg('Please enter amount');
+            return ;
         }
+            let today = new  Date();
+             let month = today.getMonth()+1;
+             let paymentDate = today.getDate();
+             let customPay = paymentInput.value;
+             let values = {
+                 month : month,
+                 paymentDate : paymentDate,
+                 customPay : customPay
+             }
+             console.log('k now',values)
+        let res = await UpdatePaymentService(values,uuid,'custom');
+        console.log(res.data);
+
 
       }
 

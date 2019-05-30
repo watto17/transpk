@@ -159,7 +159,7 @@ try{
                 status : 'paid'
             }
 
- Customer.findOneAndUpdate({uuid : req.params.id}, {$push : {history : neWhistory ,}} ,{new : true})
+ Customer.findOneAndUpdate({uuid : req.params.id}, {$push : {history : neWhistory}} ,{new : true})
         .then(hist => {
             return res.status(200).json(hist);
         }).catch(err => {

@@ -13,3 +13,4 @@ export const EDIT_PACKAGES='/packages/get-package-detail';
 export const UPDATE_PACKAGES='packages/update-package';
 export const EDIT_CUSTOMER = '/customers/get-customer-details/';
 export const UPDATE_CUSTOMER = '/customers/update-customer/';
+export const UPDATE_PAYMENT = '/customers/update-payment/';
