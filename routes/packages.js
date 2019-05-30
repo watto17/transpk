@@ -56,6 +56,21 @@ Packages.findOne({uuid : req.params.id}).then(pack => {
 })
 });
 
+
+
+router.get('/get-package-detail/:id', jwtAuth , async (req,res) => {
+    Packages.findOne({uuid : req.params.id}).then(packages => {
+        if(!packages){
+            return res.status(404).json({error  : "packages not found"})
+        }
+        return res.status(200).json(packages);
+    }).catch(err => {
+        return res.status(400).json(err);
+    })
+})
+
+
+
 router.delete('/removePackages/:id',jwtAuth , async (req, res) =>{
 Packages.findOne({uuid : req.params.id }).then(packs =>{
     if(!packs){

@@ -1,11 +1,12 @@
-import React , {useEffect , useState} from 'react';
+import React , {useEffect , useState , useRef} from 'react';
 import {Formik} from 'formik';
 import Dashboard from '../../Dashboard/dashboard1';
 import {editCustomer , getpackages , updateCustomer} from '../services';
 
 
 export default function index(props) {
-let  uuid  = props.match.params.id;  
+let  uuid  = props.match.params.id; 
+let paymentInput
     async function fetchCustomerDetail() {
 
         try {
@@ -48,14 +49,50 @@ let  uuid  = props.match.params.id;
         }
     }
     async function updatePayment() {
-      let d =  document.querySelector('input[name="payButton"]:checked').value;
-    
+
+    if(!radiocheck){
+    setpaymentmsg('Please select payment method')
+    return;
+    }
+    else{
+        let d =  document.querySelector('input[name="payButton"]:checked').value;
+      if(d === ''){
+          setpaymentmsg('Please select payment method')
+          return;
+      }
+      else if(d === 'payspayAsPackage'){
+       
+        setpaymentmsg('');
+
+      }
+      else if(d === 'addCustomAmount'){
+        if(paymentInput.value === '') {
+            paymentInput.focus();
+            setpaymentmsg('Please enter amount');
+        }
+
+      }
+
+      
+    }
         
     }
 function handleCheckbox(e){
 setPay(e.target.checked)
 }
+function radioHandler(e){
+    setradiocheck(true);
+    setpaymentmsg('');
+    let d =  document.querySelector('input[name="payButton"]:checked').value;
+    if(d === 'addCustomAmount'){
+        setpayCustom(true)
+    }
+    else {
+        setpayCustom(false)
+    }
     
+}
+
     useEffect(() => {
         fetchPackages();
         fetchCustomerDetail();
@@ -63,7 +100,11 @@ setPay(e.target.checked)
     },[]);
     const [packages , setPackages] = useState([]);
     const [showCustomer , setCustomer] = useState('');
+    const [payCustom , setpayCustom] = useState(false);
     const [pay ,setPay] = useState(false);
+    const [paymentmsg , setpaymentmsg] = useState('');
+    const [radiocheck ,setradiocheck] = useState(false)
+    // const paymentInput  = useRef(null)
     return (
         <Dashboard>
         <div className="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
@@ -175,10 +216,18 @@ setPay(e.target.checked)
                  </div>
                 {pay && <div className="form-group">
                 
-                    <input type="radio" id="payspayAsPackage" name="payButton" value="payspayAsPackage"  /> PayAsPackage<br/>
-                    <input type="radio" id="addCustomAmount" name="payButton" value="addCustomAmount"/> AddCustomAmount
+                    <input type="radio" id="payspayAsPackage"  name="payButton" value="payspayAsPackage" onChange={radioHandler}  /> PayAsPackage<br/>
+                    <input type="radio" id="addCustomAmount" name="payButton" value="addCustomAmount"  onChange={radioHandler}/> AddCustomAmount
                     <br/>
+                    {payCustom &&
+                    <div className="form-group">
+                    <label>Add Payment</label>
+                    <input type="number" name="payment" ref={(input) => {paymentInput = input}} id="payment" className="form-control"  required/> 
+                    </div>
+                    }
+                    <div style={{color : 'red' , fontWeight : 'bold'}}>{paymentmsg}</div>
                     <button type="button" className="btn btn-success" onClick={updatePayment}>Update Payment</button>
+                    
                     <hr/>
                  </div>
                

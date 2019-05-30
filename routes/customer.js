@@ -91,17 +91,15 @@ router.put('/update-customer/:id', jwtAuth , async(req, res) => {
 
 //update payment history 
 
-router.put('/update-payment/:id/:method' , jwtAuth ,async (req ,res) => {
+router.post('/update-payment/:id/:method' , jwtAuth ,async (req ,res) => {
 
-
+try{
     let neWhistory = {}
     neWhistory.month = req.body.month;
     neWhistory.paymentDate = req.body.paymentDate;
 
-    Customer.findOne({uuid : req.params.id}).then(cust => {
-        if(!cust){
-            return res.status(404).json({error : "Not found"})
-        }
+   let customer = await  Customer.findOne({uuid : req.params.id})
+   console.log(customer.packageUuid);
         if(req.params.method === 'custom'){
 
             let customPay =  req.body.customPay;
@@ -111,20 +109,15 @@ router.put('/update-payment/:id/:method' , jwtAuth ,async (req ,res) => {
             let amountleft ;
 
             let pkgPrice ; 
-            Packages.findOne({uuid : cust.packageUuid}).then(pakg =>{
-               if(pakg){
-                  pkgPrice = pakg.price
-               }
-            }).catch(err =>{
-                console.log(err);
-            })
+         let pkg = await Packages.findOne({uuid : customer.packageUuid});
 
-
+            pkgPrice = pkg.price;
+            console.log('heelo' , pkg.price);
             //logic of debit and credit 
-            currentAmount = pkgPrice + cust.credit;
+            currentAmount = pkgPrice + customer.credit;
             if(customPay < pkgPrice){
             amountleft = pkgPrice-customPay
-            credit  = cust.credit+amountleft;
+            credit  = customer.credit+amountleft;
             debit = 0;
             console.log('credit' , credit);
             console.log('debit' , debit);
@@ -150,28 +143,32 @@ console.log('debit' , debit);
             debit  : debit,
         }
 
-        Customer.findOneAndUpdate({uuid : req.params.uuid},
+      let saveCustomer = await  Customer.findOneAndUpdate({uuid : req.params.uuid},
              {$set : accounts},
-             {new : true,useFindAndModify: false})
-            .then(custi => {
-                return res.status(200).json(custi)
-            }).catch(err => {
-                console.log(err);
-            })
+             {new : true , useFindAndModify : false})
+             return res.status(200).json(saveCustomer);
+            
+        }
+        else if(req.params.method === 'payAsPackage'){
 
-
-
-
+ Customer.findOneAndUpdate({uuid : req.params.id}, {$push : {history : neWhistory }} ,{new : true})
+        .then(hist => {
+            return res.status(200).json(hist);
+        }).catch(err => {
+            console.log(err);
+        })
 
         }
-        // Customer.findOneAndUpdate({uuid : req.params.id}, {$push : {history : neWhistory }} ,{new : true})
-        // .then(hist => {
-        //     return res.status(200).json(hist);
-        // })
+    
+    }
+        catch(error){
+            console.log(error);
+        }
+       
     })
 
 
-})
+// })
 
 router.delete('/removeCustomers/:id',jwtAuth , async (req, res) =>{
     Customer.findOne({uuid : req.params.id }).then(packs =>{

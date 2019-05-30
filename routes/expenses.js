@@ -54,6 +54,19 @@ router.put('/update-expenses/:id', jwtAuth , async(req, res) => {
 })
 });
 
+
+
+router.get('/get-expenses-detail/:id', jwtAuth , async (req,res) => {
+    Expenses.findOne({uuid : req.params.id}).then(expense => {
+        if(!expense){
+            return res.status(404).json({error  : "expense not found"})
+        }
+        return res.status(200).json(expense);
+    }).catch(err => {
+        return res.status(400).json(err);
+    })
+})
+
 router.delete('/removeExpenses/:id',jwtAuth , async (req, res) =>{
     Expenses.findOne({uuid : req.params.id }).then(packs =>{
     if(!packs){
