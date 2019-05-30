@@ -146,7 +146,8 @@ try{
 
       let saveCustomer = await  Customer.findByIdAndUpdate({_id : customer._id},
              {$set : accounts,
-            $push :  {history : neWhistory}},
+              $push :  {history : neWhistory}
+            },
              {new : true , useFindAndModify : false})
              return res.status(200).json(saveCustomer);
             
