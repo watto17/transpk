@@ -91,7 +91,7 @@ router.put('/update-customer/:id', jwtAuth , async(req, res) => {
 
 //update payment history 
 
-router.post('/update-payment/:id/:method' , jwtAuth ,async (req ,res) => {
+router.put('/update-payment/:id/:method' , jwtAuth ,async (req ,res) => {
 
 try{
     let neWhistory = {}
@@ -131,27 +131,34 @@ try{
         }
         else if(customPay > currentAmount){
             amountleft = customPay - currentAmount;
-            debit = cust.debit + amountleft;
+            debit = customer.debit + amountleft;
             credit = 0;
             console.log('credit' , credit);
-console.log('debit' , debit);
+            console.log('debit' , debit);
 
 
         }
         let accounts = {
             credit : credit,
             debit  : debit,
+            status : 'paid'
         }
 
-      let saveCustomer = await  Customer.findOneAndUpdate({uuid : req.params.uuid},
-             {$set : accounts},
+      let saveCustomer = await  Customer.findByIdAndUpdate({_id : customer._id},
+             {$set : accounts,
+            $push :  {history : neWhistory}},
              {new : true , useFindAndModify : false})
              return res.status(200).json(saveCustomer);
             
+           
+            
         }
         else if(req.params.method === 'payAsPackage'){
+            let accounts = {
+                status : 'paid'
+            }
 
- Customer.findOneAndUpdate({uuid : req.params.id}, {$push : {history : neWhistory }} ,{new : true})
+ Customer.findOneAndUpdate({uuid : req.params.id}, {$push : {history : neWhistory ,}} ,{new : true})
         .then(hist => {
             return res.status(200).json(hist);
         }).catch(err => {
