@@ -1,5 +1,5 @@
 import toastr from 'toastr';
-export function showToaster({data},show,errorMsg){
+export function showToaster(data,message,show=true,){
     if(show){
         toastr.options = {
             "closeButton": true,
@@ -18,11 +18,11 @@ export function showToaster({data},show,errorMsg){
             "showMethod": "fadeIn",
             "hideMethod": "fadeOut"
         };
-        if(data  && data.status>=200 && data && data.status<300){
-            toastr.success(data.message);
+        if(data === 'success'){
+            toastr.success(message);
         }
         else{
-            toastr.error(data  && data.message?data.message:errorMsg);
+            toastr.error(message);
         }
 
     }

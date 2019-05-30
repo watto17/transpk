@@ -16,42 +16,42 @@ const Api = {
         }
     },
 
-    Post: async (url, body,toaster=true) => {
+    Post: async (url, body) => {
         if(auth.isAuthenticated())setAuthHeaders(token.get('token'));
         try {
             let data = await axios.post(url, body, { headers: { 'Content-Type': 'application/json' } });
-            console.log('added',data)
-            showToaster(data,toaster);
+            
+            
             return data;
         }
         catch (error) {
-            showToaster(error.response,toaster,error.message);
+            
             return error.response;
         }
     },
 
-    Put: async (url, body,toaster=true) => {
+    Put: async (url, body) => {
         try {
           if(auth.isAuthenticated())setAuthHeaders(token.get('token'));
              let data = await axios.put(url, body, { headers: { 'Content-Type': 'application/json' } });
-            showToaster(data,toaster);
+            
             return data;
         }
         catch (error) {
-            showToaster(error.response,toaster,error.message);
+            
             return error.response;
         }
     },
 
-    Delete: async (url,toaster=true)=> {
+    Delete: async (url)=> {
         if(auth.isAuthenticated())setAuthHeaders(token.get('token'));
         try{
             let data = await axios.delete(url,{ headers:{ 'Content-Type': 'application/json' } })
-            showToaster(data,toaster);
+            
             return data;
         }
         catch(error){
-            showToaster(error.response,toaster,error.message);
+            
             return error.response;
         }
     },

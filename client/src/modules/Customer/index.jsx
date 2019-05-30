@@ -34,7 +34,7 @@ const Team = (props) => {
         try {
             let res = await getCustomers();
             if (res.status >= 200 && res.status < 300) {
-                setTeamMembers(res.data);
+                setcustomersList(res.data);
                 setmapCustomer(!mapCustomer);
             }
         } catch (err) {
@@ -48,7 +48,7 @@ const Team = (props) => {
         fetchCustomers();
     }, []);
 
-    const [teamMembers, setTeamMembers] = useState([]);
+    const [customersList, setcustomersList] = useState([]);
     const [mapCustomer, setmapCustomer] = useState(false);
     const [pagination,setPagination]=useState({});
     return (
@@ -106,12 +106,12 @@ const Team = (props) => {
                                                 <tbody className="kt-datatable__body" style={{}}>
                                                 {
                                                  mapCustomer ? 
-                                                teamMembers.map((item, i) => {
+                                                customersList.map((item, i) => {
                                                         return (
                                                             <CustomerList key={i} {...item} currentRole={item} TeamIndex={i}  deleteUser={deleteUser} />
                                                         )
                                                 }) : 
-                                                teamMembers.map((item, i) => {
+                                                customersList.map((item, i) => {
                                                     return (
                                                         <CustomerList key={i} {...item} currentRole={item} TeamIndex={i}  deleteUser={deleteUser} />
                                                     )
