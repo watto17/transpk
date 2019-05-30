@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import {Link} from 'react-router-dom';
-
 import {deltTeamUserService, changeRoleService} from './services';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 export default function PackageList(props) {
@@ -49,7 +48,7 @@ export default function PackageList(props) {
 
         <td data-field="Action" className="kt-datatable__cell">
     <span style={{width: '70px'}}>
-        <Link to={`/editCustomers/${props && props.uuid}`} className="btn-cursor" title="eidt">
+        <Link to={`/editPackages/${props && props.uuid}`} className="btn-cursor" title="eidt">
             <button className="btn btn-success">Edit</button>
         </Link>
         </span>

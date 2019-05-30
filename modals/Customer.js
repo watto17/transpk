@@ -39,9 +39,7 @@ const CustomerSchema = new Schema({
         type : Number
     },
     paymentDate:{
-        type :Date,
-        default : Date.now()
-    }
+        type :Number, }
 
   }],
    createdAt : {

@@ -20,6 +20,7 @@ const Api = {
         if(auth.isAuthenticated())setAuthHeaders(token.get('token'));
         try {
             let data = await axios.post(url, body, { headers: { 'Content-Type': 'application/json' } });
+            console.log('added',data)
             showToaster(data,toaster);
             return data;
         }

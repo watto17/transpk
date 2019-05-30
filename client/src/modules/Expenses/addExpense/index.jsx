@@ -1,33 +1,33 @@
 import React , {useEffect , useState} from 'react';
 import {Formik} from 'formik';
 import Dashboard from '../../Dashboard/dashboard1';
-import {getpackages , addCustomers} from '../services';
-
+import {addExpenses} from '../services';
+ 
 
 export default function index() {
-    async function fetchPackages() {
-        try {
-            let res = await getpackages();
-            if(res.status >= 200 && res.status < 300){
-                setPackages(res.data);
+    // async function fetchPackages() {
+    //     try {
+    //         let res = await getpackages();
+    //         if(res.status >= 200 && res.status < 300){
+    //             setPackages(res.data);
                 
 
-            }
+    //         }
            
-        } catch (err) {
-            console.log(err);
-        }
-    }
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // }
     
 
-    async function addCustomer(values, setSubmitting) {
+    async function addExpense(values, setSubmitting) {
         try {
-         
+         console.log("-->",values,"-***-",setSubmitting,"<--")
         let today = new Date();
         values.month = today.getMonth()+1;
         values.paymentDate = today.getDate();
 
-            let res = await addCustomers(values);
+            let res = await addExpenses(values);
             setSubmitting(false);
            
         } catch (err) {
@@ -36,9 +36,9 @@ export default function index() {
     }
 
     
-    useEffect(() => {
-        fetchPackages();
-    },[]);
+    // useEffect(() => {
+    //     fetchPackages();
+    // },[]);
     const [packages , setPackages] = useState([]);
     return (
         <Dashboard>
@@ -54,14 +54,14 @@ export default function index() {
                             <div className="kt-portlet__head-label">
                                 <h3 className="kt-portlet__head-title">
                                     
-                Add Cusotmer                                            </h3>
+                Add Expense                                            </h3>
                                 <span className="kt-txt-style">Manage all your Customers</span>
                             </div>
                         </div>
     <Formik
       initialValues={{ name: '', contact: '',packageUuid : '' , debit : ''  , credit : '' }}
       onSubmit={(values, { setSubmitting }) => {
-        addCustomer(values,setSubmitting)
+        addExpense(values,setSubmitting)
       }}
     >
       {({
@@ -79,7 +79,7 @@ export default function index() {
             <div className="row">
             <div className=" col-md-10 col-xs-10 col-sm-9 offset-md-1">
             <div className="form-group">
-                 <label>Name</label>
+                 <label>Company id</label>
                     <input onBlur={handleBlur} onChange={handleChange}
                       value={values.name}
                         className={`form-control ${errors.name && touched.name && 'is-invalid'}`}
@@ -89,7 +89,7 @@ export default function index() {
                          <div className="invalid-feedback">{errors.name}</div>}
                  </div>
                  <div className="form-group">
-                 <label>Contact</label>
+                 <label>Discription</label>
                     <input onBlur={handleBlur} onChange={handleChange}
                       value={values.contact}
                         className={`form-control ${errors.contact && touched.contact && 'is-invalid'}`}
@@ -100,29 +100,9 @@ export default function index() {
                  </div>
 
 
-                 <div className="form-group">
-                 <label>Packages</label>
-                    <select onBlur={handleBlur} onChange={handleChange}
-                      value={values.packageUuid}
-                        className={`form-control ${errors.packageUuid && touched.packageUuid && 'is-invalid'}`}
-                             name="packageUuid" autoComplete="off" >
-                            {packages.map(items => {
-                                return (
-                                    <option value={items.uuid}>{items.name}</option>
-                                )
-                            })}
-                        
-                             </select>
-                           {errors.packageUuid && touched.packageUuid &&
-                         <div className="invalid-feedback">{errors.packageUuid}</div>}
-                 </div>
-
-
-
-
 
                  <div className="form-group">
-                 <label>Debit</label>
+                 <label>Amount</label>
                     <input onBlur={handleBlur} onChange={handleChange}
                       value={values.debit}
                         className={`form-control ${errors.debit && touched.debit && 'is-invalid'}`}
@@ -132,18 +112,6 @@ export default function index() {
                          <div className="invalid-feedback">{errors.debit}</div>}
                  </div>
 
-                    <div className="form-group">
-                 <label>Credit</label>
-                    <input onBlur={handleBlur} onChange={handleChange}
-                      value={values.credit}
-                        className={`form-control ${errors.credit && touched.credit && 'is-invalid'}`}
-                          type="text" placeholder="credit Address"
-                             name="credit" autoComplete="off" />
-                           {errors.credit && touched.credit &&
-                         <div className="invalid-feedback">{errors.credit}</div>}
-                 </div>
-                 
-         
           <button type="submit" className="btn btn-success" disabled={isSubmitting}>
             Submit
           </button>

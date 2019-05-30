@@ -1,16 +1,18 @@
 import React , {useEffect , useState} from 'react';
 import {Formik} from 'formik';
 import Dashboard from '../../Dashboard/dashboard1';
-import {getpackages , addCustomers} from '../services';
+import {editExpense, updateExpenses} from '../services';
 
 
-export default function index() {
-    async function fetchPackages() {
+export default function index(props) {
+let  uuid  = props.match.params.id;  
+    async function fetchExpenseDetail() {
+
         try {
-            let res = await getpackages();
+            let res = await editExpense(uuid);
+            setCustomer(res.data);
             if(res.status >= 200 && res.status < 300){
-                setPackages(res.data);
-                
+                setCustomer(res.data);
 
             }
            
@@ -18,28 +20,48 @@ export default function index() {
             console.log(err);
         }
     }
-    
 
-    async function addCustomer(values, setSubmitting) {
+        // async function fetchPackages() {
+        //     try {
+        //       //  let res = await getpackages();
+        //         if(res.status >= 200 && res.status < 300){
+        //             setPackages(res.data);
+    
+        //         }
+               
+        //     } catch (err) {
+        //         console.log(err);
+        //     }
+        // }
+
+    
+    async function UpdateCustomer(values, setSubmitting) {
         try {
          
-        let today = new Date();
-        values.month = today.getMonth()+1;
-        values.paymentDate = today.getDate();
-
-            let res = await addCustomers(values);
+            let res = await updateExpenses(values,uuid);
             setSubmitting(false);
            
         } catch (err) {
             console.log(err);
         }
     }
-
+    async function updatePayment() {
+      let d =  document.querySelector('input[name="payButton"]:checked').value;
+    
+        
+    }
+function handleCheckbox(e){
+setPay(e.target.checked)
+}
     
     useEffect(() => {
-        fetchPackages();
+       // fetchPackages();
+        fetchExpenseDetail();
+       
     },[]);
     const [packages , setPackages] = useState([]);
+    const [showCustomer , setCustomer] = useState('');
+    const [pay ,setPay] = useState(false);
     return (
         <Dashboard>
         <div className="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
@@ -58,10 +80,12 @@ export default function index() {
                                 <span className="kt-txt-style">Manage all your Customers</span>
                             </div>
                         </div>
+    {showCustomer !== '' &&
+
     <Formik
-      initialValues={{ name: '', contact: '',packageUuid : '' , debit : ''  , credit : '' }}
+      initialValues={{name : showCustomer && showCustomer.name , contact : showCustomer &&  showCustomer.contact  , debit : showCustomer && showCustomer.debit , credit : showCustomer && showCustomer.credit , packageUuid : showCustomer && showCustomer.packageUuid }}
       onSubmit={(values, { setSubmitting }) => {
-        addCustomer(values,setSubmitting)
+        UpdateCustomer(values,setSubmitting)
       }}
     >
       {({
@@ -107,8 +131,9 @@ export default function index() {
                         className={`form-control ${errors.packageUuid && touched.packageUuid && 'is-invalid'}`}
                              name="packageUuid" autoComplete="off" >
                             {packages.map(items => {
+                                let uuid = items.uuid
                                 return (
-                                    <option value={items.uuid}>{items.name}</option>
+                                    <option  value={items.uuid} >{items.name}</option>
                                 )
                             })}
                         
@@ -142,7 +167,21 @@ export default function index() {
                            {errors.credit && touched.credit &&
                          <div className="invalid-feedback">{errors.credit}</div>}
                  </div>
-                 
+                 <div className="form-group">
+                 <label>Pay </label>
+                    <input type="checkbox" name="payCheckbox" onChange={handleCheckbox}/>
+                 </div>
+                {pay && <div className="form-group">
+                
+                    <input type="radio" id="payspayAsPackage" name="payButton" value="payspayAsPackage"  /> PayAsPackage<br/>
+                    <input type="radio" id="addCustomAmount" name="payButton" value="addCustomAmount"/> AddCustomAmount
+                    <br/>
+                    <button type="button" className="btn btn-success" onClick={updatePayment}>Update Payment</button>
+                    <hr/>
+                 </div>
+               
+                }
+                
          
           <button type="submit" className="btn btn-success" disabled={isSubmitting}>
             Submit
@@ -152,7 +191,7 @@ export default function index() {
           </div>
         </form>
       )}
-    </Formik>
+    </Formik>}
 
                         </div>
                             </div>
