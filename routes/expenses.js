@@ -17,8 +17,19 @@ router.post('/register', jwtAuth , async (req, res) =>{
         res.status(200).json(pack);
     }).catch(err =>{
         console.log(err);
-    })
+    }) 
 });
+
+router.get('/get-expenses-detail/:id', jwtAuth , async (req,res) => {
+    Expenses.findOne({uuid : req.params.id}).then(expense => {
+        if(!expense){
+            return res.status(404).json({error  : "expense not found"})
+        }
+        return res.status(200).json(expense);
+    }).catch(err => {
+        return res.status(400).json(err);
+    })
+ });
 router.get('/get-expenses', jwtAuth , async (req,res) => {
     Expenses.find().then(packs => {
         return res.status(200).json(packs);

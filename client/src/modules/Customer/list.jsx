@@ -50,7 +50,7 @@ export default function TeamsList(props) {
         <span style={{width: '70px'}}>
             <Link to={`/editCustomers/${props && props.uuid}`} className="btn-cursor" title="eidt">
                 <button className="btn btn-success">Edit</button>
-            </Link>
+            </Link> 
             </span>
             </td>
             <td data-field="Action" className="kt-datatable__cell">
