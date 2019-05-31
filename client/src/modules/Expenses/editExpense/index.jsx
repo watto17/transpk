@@ -24,20 +24,6 @@ let  uuid  = props.match.params.id;
         }
     }
 
-        // async function fetchPackages() {
-        //     try {
-        //       //  let res = await getpackages();
-        //         if(res.status >= 200 && res.status < 300){
-        //             setPackages(res.data);
-    
-        //         }
-               
-        //     } catch (err) {
-        //         console.log(err);
-        //     }
-        // }
-
-    
     async function UpdateCustomer(values, setSubmitting) {
         try {
          

@@ -46,9 +46,7 @@ const Expenses = (props) => {
         
         
     }
-    async function mapItems(){
 
-    }
 
     async function fetchExpense(options={
         limit:10,

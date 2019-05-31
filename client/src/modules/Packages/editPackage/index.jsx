@@ -24,20 +24,6 @@ let  uuid  = props.match.params.id;
         }
     }
 
-        // async function fetchPackages() {
-        //     try {
-        //         let res = await getpackages();
-        //         if(res.status >= 200 && res.status < 300){
-        //             setPackages(res.data);
-    
-        //         }
-               
-        //     } catch (err) {
-        //         console.log(err);
-        //     }
-        // }
-
-    
     async function UpdateCustomer(values, setSubmitting) {
         try {
          
@@ -57,14 +43,6 @@ let  uuid  = props.match.params.id;
             console.log(err);
         }
     }
-    async function updatePayment() {
-      let d =  document.querySelector('input[name="payButton"]:checked').value;
-    
-        
-    }
-function handleCheckbox(e){
-setPay(e.target.checked)
-}
     
     useEffect(() => {
       //  fetchPackages();

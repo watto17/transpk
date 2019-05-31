@@ -9,21 +9,7 @@ import {showToaster} from '../../../utils/toastr';
  
 
 export default function index() {
-    // async function fetchPackages() {
-    //     try {
-    //         let res = await getpackages();
-    //         if(res.status >= 200 && res.status < 300){
-    //             setPackages(res.data);
-                
-
-    //         }
-           
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // }
-    
-
+  
     async function addExpense(values, setSubmitting) {
         try {
         let today = new Date();
@@ -49,11 +35,6 @@ export default function index() {
         }
     }
 
-    
-    // useEffect(() => {
-    //     fetchPackages();
-    // },[]);
-    const [packages , setPackages] = useState([]);
     return (
         <Dashboard>
         <div className="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">

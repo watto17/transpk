@@ -1,12 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import PackageList from "./list";
-import api from './../../Api'
-import {setAuthHeaders} from "../../Api/setauthHeaders";
 import {deltTeamUserService, getPackage, inviteUser} from './services';
 import {inviteValidationSchema} from "../Login/validation";
 import {Link} from "react-router-dom";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faSpinner} from "@fortawesome/free-solid-svg-icons/faSpinner";
 import {Formik} from "formik";
 import Dashboard from '../Dashboard/dashboard1';
 import '../../styles/teams.css';
@@ -30,24 +26,6 @@ const Packages = (props) => {
             console.log(error);
         }
     }
-
-    async function changeRoleCurrent(role,index){
-    
-
-        let allTeams = teamMembers;
-      
-        delete allTeams[index].role ;
-        allTeams[index].role = role;
-      
-        setTeamMembers(allTeams);
-        setmapTeams(!mapTeams);
-        
-        
-    }
-    async function mapItems(){
-
-    }
-
     async function fetchPackage(options={
         limit:10,
         page:1
@@ -161,12 +139,12 @@ const Packages = (props) => {
                                                  mapTeams ? 
                                                 teamMembers.map((item, i) => {
                                                         return (
-                                                            <PackageList key={i} {...item} currentRole={item} TeamIndex={i} onClick={changeRoleCurrent} deleteUser={deleteUser} />
+                                                            <PackageList key={i} {...item} currentRole={item} TeamIndex={i}  deleteUser={deleteUser} />
                                                         )
                                                 }) : 
                                                 teamMembers.map((item, i) => {
                                                     return (
-                                                        <PackageList key={i} {...item} currentRole={item} TeamIndex={i} onClick={changeRoleCurrent} deleteUser={deleteUser} />
+                                                        <PackageList key={i} {...item} currentRole={item} TeamIndex={i}  deleteUser={deleteUser} />
                                                     )
                                                 })
                                                 }
