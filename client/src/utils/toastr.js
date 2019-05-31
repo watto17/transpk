@@ -21,7 +21,7 @@ export function showToaster(data,message,show=true,){
         if(data === 'success'){
             toastr.success(message);
         }
-        else{
+        else if(data === 'error'){
             toastr.error(message);
         }
 

@@ -19,13 +19,14 @@ const Team = (props) => {
             
             let res = await deleteCustomersService(id);
             if(res.status >=200 && res.status<300){
-                showToaster('success','User Deleted Successfull')
+                showToaster('success','User Deleted Successfull');
+                fetchCustomers();
             }
             else{
                 showToaster('error','Something went wrong')
             }
             
-            setmapCustomer(!mapCustomer);
+           
 
         } catch (error) {
             console.log(error);
@@ -42,7 +43,7 @@ const Team = (props) => {
             let res = await getCustomers();
             if (res.status >= 200 && res.status < 300) {
                 setcustomersList(res.data);
-                setmapCustomer(!mapCustomer);
+                
             }
         } catch (err) {
             console.log(err);
@@ -111,13 +112,7 @@ const Team = (props) => {
                                                 </tr>
                                                 </thead>
                                                 <tbody className="kt-datatable__body" style={{}}>
-                                                {
-                                                 mapCustomer ? 
-                                                customersList.map((item, i) => {
-                                                        return (
-                                                            <CustomerList key={i} {...item} currentRole={item} TeamIndex={i}  deleteUser={deleteUser} />
-                                                        )
-                                                }) : 
+                                                { 
                                                 customersList.map((item, i) => {
                                                     return (
                                                         <CustomerList key={i} {...item} currentRole={item} TeamIndex={i}  deleteUser={deleteUser} />

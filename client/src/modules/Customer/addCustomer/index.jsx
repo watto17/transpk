@@ -120,9 +120,9 @@ export default function index() {
                       value={values.packageUuid}
                         className={`form-control ${errors.packageUuid && touched.packageUuid && 'is-invalid'}`}
                              name="packageUuid" autoComplete="off" >
-                            {packages.map(items => {
+                            {packages.map((items , index) => {
                                 return (
-                                    <option value={items.uuid}>{items.name}</option>
+                                    <option key={index} value={items.uuid}>{items.name}</option>
                                 )
                             })}
                         

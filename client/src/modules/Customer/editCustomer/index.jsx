@@ -14,9 +14,13 @@ let paymentInput;
             let res = await editCustomer(uuid);
             if(res.status >= 200 && res.status < 300){
                 setCustomer(res.data);
+                showToaster('success','User edit successfully');
 
                
 
+            }
+            else {
+                showToaster('error','Something went wrong');
             }
            
         } catch (err) {
@@ -45,6 +49,9 @@ let paymentInput;
             setSubmitting(false);
             if(res.status >=200 && res.status < 300){
                 showToaster('success', 'Customer updated successfully');
+                setTimeout(() => {
+                    window.location.href = '/customers'
+                },2000);
             }
             else {
                 showToaster('error', 'Something went wrong');
@@ -81,9 +88,10 @@ let paymentInput;
              let res = await UpdatePaymentService(values,uuid,'payAsPackage');
              if(res.status >= 200 && res.status<300){
                 showToaster('success','Payment updated successfully');
+
                 setTimeout(() => {
                     window.location.href = '/customers'
-                },3000)
+                },2000)
              }
              else {
                 showToaster('error','Something went wrong');
@@ -226,10 +234,10 @@ function radioHandler(e){
                       value={values.packageUuid}
                         className={`form-control ${errors.packageUuid && touched.packageUuid && 'is-invalid'}`}
                              name="packageUuid" autoComplete="off" >
-                            {packages.map(items => {
+                            {packages.map((items , index) => {
                                 let uuid = items.uuid
                                 return (
-                                    <option  value={items.uuid} >{items.name}</option>
+                                    <option  key={index} value={items.uuid} >{items.name}</option>
                                 )
                             })}
                         
