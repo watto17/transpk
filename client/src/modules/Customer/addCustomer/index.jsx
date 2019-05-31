@@ -2,7 +2,8 @@ import React , {useEffect , useState} from 'react';
 import {Formik} from 'formik';
 import Dashboard from '../../Dashboard/dashboard1';
 import {getpackages , addCustomers} from '../services';
-import {showToaster} from '../../../utils/toastr'
+import {showToaster} from '../../../utils/toastr';
+import {CustomersSchema} from '../validations';
 
 
 export default function index() {
@@ -74,6 +75,8 @@ export default function index() {
       onSubmit={(values, { setSubmitting }) => {
         addCustomer(values,setSubmitting)
       }}
+
+      validationSchema={CustomersSchema}
     >
       {({
         values,
