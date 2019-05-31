@@ -2,21 +2,25 @@ import React , {useEffect , useState , useRef} from 'react';
 import {Formik} from 'formik';
 import Dashboard from '../../Dashboard/dashboard1';
 import {editCustomer , getpackages , updateCustomer , UpdatePaymentService} from '../services';
-
+import {showToaster} from '../../../utils/toastr';
+import {CustomersSchema} from '../validations';
 
 export default function index(props) {
 let  uuid  = props.match.params.id; 
-let paymentInput
+let paymentInput;
     async function fetchCustomerDetail() {
 
         try {
             let res = await editCustomer(uuid);
-            setCustomer(res.data);
-            console.log('res', res.data)
             if(res.status >= 200 && res.status < 300){
                 setCustomer(res.data);
-                console.log(showCustomer)
+                showToaster('success','User edit successfully');
 
+               
+
+            }
+            else {
+                showToaster('error','Something went wrong');
             }
            
         } catch (err) {
@@ -43,6 +47,15 @@ let paymentInput
          
             let res = await updateCustomer(values,uuid);
             setSubmitting(false);
+            if(res.status >=200 && res.status < 300){
+                showToaster('success', 'Customer updated successfully');
+                setTimeout(() => {
+                    window.location.href = '/customers'
+                },2000);
+            }
+            else {
+                showToaster('error', 'Something went wrong');
+             }
            
         } catch (err) {
             console.log(err);
@@ -73,7 +86,17 @@ let paymentInput
                  
              }
              let res = await UpdatePaymentService(values,uuid,'payAsPackage');
-        console.log('res pay pkg only' , res.data);
+             if(res.status >= 200 && res.status<300){
+                showToaster('success','Payment updated successfully');
+
+                setTimeout(() => {
+                    window.location.href = '/customers'
+                },2000)
+             }
+             else {
+                showToaster('error','Something went wrong');
+    
+             } 
         
 
       }
@@ -92,9 +115,19 @@ let paymentInput
                  paymentDate : paymentDate,
                  customPay : customPay
              }
-             console.log('k now',values)
+            
         let res = await UpdatePaymentService(values,uuid,'custom');
-        console.log(res.data);
+         if(res.status >= 200 && res.status<300){
+            showToaster('success','Payment updated successfully');
+            setTimeout(() => {
+                window.location.href = '/customers'
+            },3000)
+
+         }
+         else {
+            showToaster('error','Something went wrong');
+
+         }    
 
 
       }
@@ -156,6 +189,8 @@ function radioHandler(e){
       onSubmit={(values, { setSubmitting }) => {
         UpdateCustomer(values,setSubmitting)
       }}
+
+      validationSchema={CustomersSchema}
     >
       {({
         values,
@@ -199,10 +234,10 @@ function radioHandler(e){
                       value={values.packageUuid}
                         className={`form-control ${errors.packageUuid && touched.packageUuid && 'is-invalid'}`}
                              name="packageUuid" autoComplete="off" >
-                            {packages.map(items => {
+                            {packages.map((items , index) => {
                                 let uuid = items.uuid
                                 return (
-                                    <option  value={items.uuid} >{items.name}</option>
+                                    <option  key={index} value={items.uuid} >{items.name}</option>
                                 )
                             })}
                         

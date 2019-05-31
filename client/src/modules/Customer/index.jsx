@@ -11,14 +11,22 @@ import {Formik} from "formik";
 import Dashboard from '../Dashboard/dashboard1';
 import '../../styles/teams.css';
 import Pagination from "../../Components/molecules/Pagination";
+import {showToaster} from '../../utils/toastr';
 
 const Team = (props) => {
     async function deleteUser(id) {
         try {
             
             let res = await deleteCustomersService(id);
-            console.log('data deleted successfully',res.data)
-            setmapCustomer(!mapCustomer);
+            if(res.status >=200 && res.status<300){
+                showToaster('success','User Deleted Successfull');
+                fetchCustomers();
+            }
+            else{
+                showToaster('error','Something went wrong')
+            }
+            
+           
 
         } catch (error) {
             console.log(error);
@@ -35,7 +43,7 @@ const Team = (props) => {
             let res = await getCustomers();
             if (res.status >= 200 && res.status < 300) {
                 setcustomersList(res.data);
-                setmapCustomer(!mapCustomer);
+                
             }
         } catch (err) {
             console.log(err);
@@ -104,13 +112,7 @@ const Team = (props) => {
                                                 </tr>
                                                 </thead>
                                                 <tbody className="kt-datatable__body" style={{}}>
-                                                {
-                                                 mapCustomer ? 
-                                                customersList.map((item, i) => {
-                                                        return (
-                                                            <CustomerList key={i} {...item} currentRole={item} TeamIndex={i}  deleteUser={deleteUser} />
-                                                        )
-                                                }) : 
+                                                { 
                                                 customersList.map((item, i) => {
                                                     return (
                                                         <CustomerList key={i} {...item} currentRole={item} TeamIndex={i}  deleteUser={deleteUser} />

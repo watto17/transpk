@@ -2,7 +2,8 @@ import React , {useEffect , useState} from 'react';
 import {Formik} from 'formik';
 import Dashboard from '../../Dashboard/dashboard1';
 import {getpackages , addCustomers} from '../services';
-import {showToaster} from '../../../utils/toastr'
+import {showToaster} from '../../../utils/toastr';
+import {CustomersSchema} from '../validations';
 
 
 export default function index() {
@@ -29,10 +30,17 @@ export default function index() {
         values.paymentDate = today.getDate();
 
             let res = await addCustomers(values);
-            console.log('add customerr',res)
-            if(res.status >=200 && res.status<300)
+            if(res.status >=200 && res.status<300){
             showToaster('success','Customer added successfully');
             setSubmitting(false);
+              setTimeout(() => {
+                window.location.href='/customers'
+              }, (2000));
+          
+          }
+            else {
+              showToaster('error','Something went wrong');
+            }
            
         } catch (err) {
             console.log(err);
@@ -67,6 +75,8 @@ export default function index() {
       onSubmit={(values, { setSubmitting }) => {
         addCustomer(values,setSubmitting)
       }}
+
+      validationSchema={CustomersSchema}
     >
       {({
         values,
@@ -110,9 +120,9 @@ export default function index() {
                       value={values.packageUuid}
                         className={`form-control ${errors.packageUuid && touched.packageUuid && 'is-invalid'}`}
                              name="packageUuid" autoComplete="off" >
-                            {packages.map(items => {
+                            {packages.map((items , index) => {
                                 return (
-                                    <option value={items.uuid}>{items.name}</option>
+                                    <option key={index} value={items.uuid}>{items.name}</option>
                                 )
                             })}
                         
