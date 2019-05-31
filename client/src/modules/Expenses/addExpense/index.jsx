@@ -28,6 +28,7 @@ export default function index() {
         values.paymentDate = today.getDate();
 
             let res = await addExpenses(values);
+            console.log("expense is",res)
             setSubmitting(false);
            
         } catch (err) {
@@ -59,7 +60,7 @@ export default function index() {
                             </div>
                         </div>
     <Formik
-      initialValues={{ name: '', contact: '',packageUuid : '' , debit : ''  , credit : '' }}
+      initialValues={{ companyUuid: '', name: '',price : ''}}
       onSubmit={(values, { setSubmitting }) => {
         addExpense(values,setSubmitting)
       }}
@@ -81,22 +82,22 @@ export default function index() {
             <div className="form-group">
                  <label>Company id</label>
                     <input onBlur={handleBlur} onChange={handleChange}
-                      value={values.name}
-                        className={`form-control ${errors.name && touched.name && 'is-invalid'}`}
-                          type="text" placeholder="name"
-                             name="name" autoComplete="off" />
-                           {errors.name && touched.name &&
-                         <div className="invalid-feedback">{errors.name}</div>}
+                      value={values.companyUuid}
+                        className={`form-control ${errors.companyUuid && touched.companyUuid && 'is-invalid'}`}
+                          type="text" placeholder="Company id"
+                             name="companyUuid" autoComplete="off" />
+                           {errors.companyUuid && touched.companyUuid &&
+                         <div className="invalid-feedback">{errors.companyUuid}</div>}
                  </div>
                  <div className="form-group">
                  <label>Discription</label>
                     <input onBlur={handleBlur} onChange={handleChange}
-                      value={values.contact}
-                        className={`form-control ${errors.contact && touched.contact && 'is-invalid'}`}
-                          type="text" placeholder="contact Address"
-                             name="contact" autoComplete="off" />
-                           {errors.contact && touched.contact &&
-                         <div className="invalid-feedback">{errors.contact}</div>}
+                      value={values.name}
+                        className={`form-control ${errors.name && touched.name && 'is-invalid'}`}
+                          type="text" placeholder="Discription"
+                             name="name" autoComplete="off" />
+                           {errors.name && touched.name &&
+                         <div className="invalid-feedback">{errors.name}</div>}
                  </div>
 
 
@@ -104,12 +105,12 @@ export default function index() {
                  <div className="form-group">
                  <label>Amount</label>
                     <input onBlur={handleBlur} onChange={handleChange}
-                      value={values.debit}
-                        className={`form-control ${errors.debit && touched.debit && 'is-invalid'}`}
-                          type="text" placeholder="debit "
-                             name="debit" autoComplete="off" />
-                           {errors.debit && touched.debit &&
-                         <div className="invalid-feedback">{errors.debit}</div>}
+                      value={values.price}
+                        className={`form-control ${errors.price && touched.price && 'is-invalid'}`}
+                          type="text" placeholder="price "
+                             name="price" autoComplete="off" />
+                           {errors.price && touched.price &&
+                         <div className="invalid-feedback">{errors.price}</div>}
                  </div>
 
           <button type="submit" className="btn btn-success" disabled={isSubmitting}>

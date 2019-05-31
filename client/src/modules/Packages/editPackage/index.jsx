@@ -78,14 +78,14 @@ setPay(e.target.checked)
                             <div className="kt-portlet__head-label">
                                 <h3 className="kt-portlet__head-title">
                                     
-                Add Cusotmer                                            </h3>
+                Edit Package                                            </h3>
                                 <span className="kt-txt-style">Manage all your Customers</span>
                             </div>
                         </div>
     {showCustomer !== '' &&
 
     <Formik
-      initialValues={{name : showCustomer && showCustomer.name , contact : showCustomer &&  showCustomer.contact  , debit : showCustomer && showCustomer.debit , credit : showCustomer && showCustomer.credit , packageUuid : showCustomer && showCustomer.packageUuid }}
+      initialValues={{companyUuid : showCustomer.companyUuid , name :   showCustomer.name  , price : showCustomer.price}}
       onSubmit={(values, { setSubmitting }) => {
         UpdateCustomer(values,setSubmitting)
       }}
@@ -105,6 +105,16 @@ setPay(e.target.checked)
             <div className="row">
             <div className=" col-md-10 col-xs-10 col-sm-9 offset-md-1">
             <div className="form-group">
+                 <label>Company Id</label>
+                    <input onBlur={handleBlur} onChange={handleChange}
+                      value={values.companyUuid}
+                        className={`form-control ${errors.name && touched.name && 'is-invalid'}`}
+                          type="text" placeholder="company id"
+                             name="companyUuid" autoComplete="off" />
+                           {errors.companyUuid && touched.companyUuid &&
+                         <div className="invalid-feedback">{errors.companyUuid}</div>}
+                 </div>
+                 <div className="form-group">
                  <label>Name</label>
                     <input onBlur={handleBlur} onChange={handleChange}
                       value={values.name}
@@ -114,76 +124,25 @@ setPay(e.target.checked)
                            {errors.name && touched.name &&
                          <div className="invalid-feedback">{errors.name}</div>}
                  </div>
-                 <div className="form-group">
-                 <label>Contact</label>
-                    <input onBlur={handleBlur} onChange={handleChange}
-                      value={values.contact}
-                        className={`form-control ${errors.contact && touched.contact && 'is-invalid'}`}
-                          type="text" placeholder="contact Address"
-                             name="contact" autoComplete="off" />
-                           {errors.contact && touched.contact &&
-                         <div className="invalid-feedback">{errors.contact}</div>}
-                 </div>
 
 
-                 <div className="form-group">
-                 <label>Packages</label>
-                    <select onBlur={handleBlur} onChange={handleChange}
-                      value={values.packageUuid}
-                        className={`form-control ${errors.packageUuid && touched.packageUuid && 'is-invalid'}`}
-                             name="packageUuid" autoComplete="off" >
-                            {packages.map(items => {
-                                let uuid = items.uuid
-                                return (
-                                    <option  value={items.uuid} >{items.name}</option>
-                                )
-                            })}
-                        
-                             </select>
-                           {errors.packageUuid && touched.packageUuid &&
-                         <div className="invalid-feedback">{errors.packageUuid}</div>}
-                 </div>
-
-
-
-
-
-                 <div className="form-group">
-                 <label>Debit</label>
-                    <input onBlur={handleBlur} onChange={handleChange}
-                      value={values.debit}
-                        className={`form-control ${errors.debit && touched.debit && 'is-invalid'}`}
-                          type="text" placeholder="debit "
-                             name="debit" autoComplete="off" />
-                           {errors.debit && touched.debit &&
-                         <div className="invalid-feedback">{errors.debit}</div>}
-                 </div>
-
-                    <div className="form-group">
-                 <label>Credit</label>
-                    <input onBlur={handleBlur} onChange={handleChange}
-                      value={values.credit}
-                        className={`form-control ${errors.credit && touched.credit && 'is-invalid'}`}
-                          type="text" placeholder="credit Address"
-                             name="credit" autoComplete="off" />
-                           {errors.credit && touched.credit &&
-                         <div className="invalid-feedback">{errors.credit}</div>}
-                 </div>
-                 <div className="form-group">
-                 <label>Pay </label>
-                    <input type="checkbox" name="payCheckbox" onChange={handleCheckbox}/>
-                 </div>
-                {pay && <div className="form-group">
                 
-                    <input type="radio" id="payspayAsPackage" name="payButton" value="payspayAsPackage"  /> PayAsPackage<br/>
-                    <input type="radio" id="addCustomAmount" name="payButton" value="addCustomAmount"/> AddCustomAmount
-                    <br/>
-                    <button type="button" className="btn btn-success" onClick={updatePayment}>Update Payment</button>
-                    <hr/>
+
+
+
+
+                 <div className="form-group">
+                 <label>Price</label>
+                    <input onBlur={handleBlur} onChange={handleChange}
+                      value={values.price}
+                        className={`form-control ${errors.price && touched.price && 'is-invalid'}`}
+                          type="text" placeholder="price "
+                             name="price" autoComplete="off" />
+                           {errors.price && touched.price &&
+                         <div className="invalid-feedback">{errors.price}</div>}
                  </div>
-               
-                }
-                
+
+                  
          
           <button type="submit" className="btn btn-success" disabled={isSubmitting}>
             Submit

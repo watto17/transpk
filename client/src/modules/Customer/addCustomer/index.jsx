@@ -75,7 +75,7 @@ export default function index() {
         handleChange,
         handleBlur,
         handleSubmit,
-        isSubmitting,
+        isSubmitting, 
         /* and other goodies */
       }) => (
         <form onSubmit={handleSubmit}>

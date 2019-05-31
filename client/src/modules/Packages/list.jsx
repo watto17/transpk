@@ -55,7 +55,7 @@ export default function PackageList(props) {
         </td>
         <td data-field="Action" className="kt-datatable__cell">
     <span style={{width: '70px'}}>
-        <a className="btn-cursor" title="Delete" onClick={() => deleteUser(props._id)}>
+        <a className="btn-cursor" title="Delete" onClick={() => deleteUser(props.uuid)}>
             <i style={{fontSize:'19px'}} className="la la-trash-o text-danger" aria-hidden="true"/>
         </a>
         </span>

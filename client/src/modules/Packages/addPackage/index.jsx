@@ -23,11 +23,12 @@ export default function index() {
     async function addPackage(values, setSubmitting) {
         try {
          
-        let today = new Date();
-        values.month = today.getMonth()+1;
-        values.paymentDate = today.getDate();
+        // let today = new Date();
+        // values.month = today.getMonth()+1;
+        // values.paymentDate = today.getDate();
 
             let res = await addPackages(values);
+            console.log("add package",res)
             setSubmitting(false);
            
         } catch (err) {
@@ -43,7 +44,7 @@ export default function index() {
     return (
         <Dashboard>
         <div className="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
-        <h5 className="account-text">Account</h5>
+        <h5 className="account-text">Package</h5>
         <div className="row">
             <div className="col-lg-12">
                 <div
@@ -56,10 +57,10 @@ export default function index() {
                                     
                 Add Package                                            </h3>
                                 <span className="kt-txt-style">Manage all your Customers</span>
-                            </div>
+                            </div> 
                         </div>
     <Formik
-      initialValues={{ name: '', contact: '',packageUuid : '' , debit : ''  , credit : '' }}
+      initialValues={{ companyUuid: '', name: '',price : ''}}
       onSubmit={(values, { setSubmitting }) => {
         addPackage(values,setSubmitting)
       }}
@@ -81,22 +82,22 @@ export default function index() {
             <div className="form-group">
                  <label>Company Id</label>
                     <input onBlur={handleBlur} onChange={handleChange}
-                      value={values.name}
-                        className={`form-control ${errors.name && touched.name && 'is-invalid'}`}
-                          type="text" placeholder="name"
-                             name="name" autoComplete="off" />
-                           {errors.name && touched.name &&
-                         <div className="invalid-feedback">{errors.name}</div>}
+                      value={values.companyUuid}
+                        className={`form-control ${errors.companyUuid && touched.companyUuid && 'is-invalid'}`}
+                          type="text" placeholder="Company Id"
+                             name="companyUuid" autoComplete="off" />
+                           {errors.companyUuid && touched.companyUuid &&
+                         <div className="invalid-feedback">{errors.companyUuid}</div>}
                  </div>
                  <div className="form-group">
                  <label>Name</label>
                     <input onBlur={handleBlur} onChange={handleChange}
-                      value={values.contact}
-                        className={`form-control ${errors.contact && touched.contact && 'is-invalid'}`}
-                          type="text" placeholder="contact Address"
-                             name="contact" autoComplete="off" />
-                           {errors.contact && touched.contact &&
-                         <div className="invalid-feedback">{errors.contact}</div>}
+                      value={values.name}
+                        className={`form-control ${errors.name && touched.name && 'is-invalid'}`}
+                          type="text" placeholder="Name"
+                             name="name" autoComplete="off" />
+                           {errors.name && touched.name &&
+                         <div className="invalid-feedback">{errors.name}</div>}
                  </div>
 
 
@@ -104,12 +105,12 @@ export default function index() {
                     <div className="form-group">
                  <label>Price</label>
                     <input onBlur={handleBlur} onChange={handleChange}
-                      value={values.credit}
-                        className={`form-control ${errors.credit && touched.credit && 'is-invalid'}`}
-                          type="text" placeholder="credit Address"
-                             name="credit" autoComplete="off" />
-                           {errors.credit && touched.credit &&
-                         <div className="invalid-feedback">{errors.credit}</div>}
+                      value={values.price}
+                        className={`form-control ${errors.price && touched.price && 'is-invalid'}`}
+                          type="text" placeholder="price"
+                             name="price" autoComplete="off" />
+                           {errors.price && touched.price &&
+                         <div className="invalid-feedback">{errors.price}</div>}
                  </div>
                  
          

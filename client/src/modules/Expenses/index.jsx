@@ -18,7 +18,7 @@ const Expenses = (props) => {
     const [pagination,setPagination]=useState({});
     async function deleteUser(id) { 
         try {
-            let res = await deltTeamUserService(id);
+            let res = await deltTeamUserService(id); 
             const remainingMembers = teamMembers.filter(function (item, index) {
                 return item._id != id;
             });
@@ -123,33 +123,12 @@ const Expenses = (props) => {
                                             <span className="kt-txt-style">Manage all your team members</span>
                                         </div>
                                     </div>
-                                    <form onSubmit={handleSubmit} action="#" noValidate className="kt-portlet__body kt-form-section">
-                                        <div className="kt-input-icon ">
-                                            <div className="row">
-                                                <div className=" col-md-10 col-xs-10 col-sm-9">
+                                    <div className="row">
+<div className="col-md-2 offset-md-10">
+<Link to="/addExpenses"><button className="btn btn-success ">Add Expenses</button></Link>
 
-                                                    <input onBlur={handleBlur} onChange={handleChange}
-                                                           value={values.email}
-                                                           className={`form-control ${errors.email && touched.email && 'is-invalid'}`}
-                                                           type="text" placeholder="Email Address"
-                                                           name="email" autoComplete="off"
-                                                           id="generalSearch"/>
-                                                    {errors.email && touched.email &&
-                                                    <div className="invalid-feedback">{errors.email}</div>}
-
-                                                </div>
-                                                <div className=" col-md-2 col-xs-2 col-sm-3">
-                                                    <button type="submit" disabled={isSubmitting}
-                                                            className={`btn btn-brand btn-elevate btn-square btn-cl  
-                                                            ${isSubmitting ? ' btn-teamInvite' : ''}`}><i
-                                                        className="fa fa-plus fa-1x"/> Invite <FontAwesomeIcon
-                                                        className={(isSubmitting ? ' vis' : ' spin_ldr')}
-                                                        icon={faSpinner} spin pull="right"/>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
+</div> 
+</div>
                                     <div className="kt-portlet__body kt-portlet__body--fit kt-team-list">
                                         <div
                                             className="kt-datatable kt-datatable--default kt-datatable--brand kt-datatable--loaded  table-responsive-xl"

@@ -5,7 +5,7 @@ export default function TeamsList(props) {
     const [roledrpdwn, setroledrpdwn] = useState(false)
    async function deleteUser(id){
         props.deleteUser(id)  }
-
+ 
     return (
         <tr data-row={0} className="kt-datatable__row">
             <td data-field="TeamMember" className="kt-datatable__cell ">

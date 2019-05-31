@@ -36,7 +36,7 @@ export default function ExpenseList(props) {
                 </div>
                 <div className="kt-user-card-v2__details">
                     <span
-                        className="kt-user-card-v2__name">{props.companyUuid}</span>
+                        className="kt-user-card-v2__name">{props.companyUuid}</span> 
                    
                 </div>
             </div>
@@ -57,7 +57,7 @@ export default function ExpenseList(props) {
         </td>
         <td data-field="Action" className="kt-datatable__cell">
     <span style={{width: '70px'}}>
-        <a className="btn-cursor" title="Delete" onClick={() => deleteUser(props._id)}>
+        <a className="btn-cursor" title="Delete" onClick={() => deleteUser(props.uuid)}>
             <i style={{fontSize:'19px'}} className="la la-trash-o text-danger" aria-hidden="true"/>
         </a>
         </span>

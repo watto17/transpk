@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {setAuthHeaders} from '../../Api/setauthHeaders';
 import Api from '../../Api/index';
-import {FETCH_EXPENSES,ADD_EXPENSE,EDIT_EXPENSE, UPDATE_EXPENSE} from '../../Api/endpoints';
+import {FETCH_EXPENSES,ADD_EXPENSE,EDIT_EXPENSE, UPDATE_EXPENSE,DELETE_EXPENSE} from '../../Api/endpoints';
 
 export const getTeams = async (body) => {
 
@@ -10,7 +10,14 @@ export const getTeams = async (body) => {
 
 }
 export const deltTeamUserService = async (userId) => {
- 
+  try{
+    let data =  await Api.Delete(DELETE_EXPENSE+userId);
+    return data;
+   
+    }
+    catch(error){
+        return error
+    }
 
 
 }
