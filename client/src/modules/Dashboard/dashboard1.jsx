@@ -14,15 +14,15 @@ import { UserdetailsService } from './service';
 
 export default function Profile(props) {
     async function fetchUserDet() {
-        let res = await UserdetailsService();
-        try {
-            if(res.meta.status >= 200 && res.meta.status <300){
-                setuserDetails(res.data);
-            }
-        }
-        catch(error){
-            console.log(error);
-        }
+        // let res = await UserdetailsService();
+        // try {
+        //     if(res.meta.status >= 200 && res.meta.status <300){
+        //         setuserDetails(res.data);
+        //     }
+        // }
+        // catch(error){
+        //     console.log(error);
+        // }
 
     }
     function DocomentClick(e){

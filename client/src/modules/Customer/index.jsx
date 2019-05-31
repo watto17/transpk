@@ -11,13 +11,20 @@ import {Formik} from "formik";
 import Dashboard from '../Dashboard/dashboard1';
 import '../../styles/teams.css';
 import Pagination from "../../Components/molecules/Pagination";
+import {showToaster} from '../../utils/toastr';
 
 const Team = (props) => {
     async function deleteUser(id) {
         try {
             
             let res = await deleteCustomersService(id);
-            console.log('data deleted successfully',res.data)
+            if(res.status >=200 && res.status<300){
+                showToaster('success','User Deleted Successfull')
+            }
+            else{
+                showToaster('error','Something went wrong')
+            }
+            
             setmapCustomer(!mapCustomer);
 
         } catch (error) {
