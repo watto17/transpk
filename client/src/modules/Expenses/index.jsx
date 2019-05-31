@@ -11,6 +11,8 @@ import {Formik} from "formik";
 import Dashboard from '../Dashboard/dashboard1';
 import '../../styles/teams.css';
 import Pagination from "../../Components/molecules/Pagination";
+import {showToaster} from '../../utils/toastr';
+
 
 const Expenses = (props) => {
     const [teamMembers, setTeamMembers] = useState([]);
@@ -19,12 +21,13 @@ const Expenses = (props) => {
     async function deleteUser(id) { 
         try {
             let res = await deltTeamUserService(id); 
-            const remainingMembers = teamMembers.filter(function (item, index) {
-                return item._id != id;
-            });
-            setTeamMembers(remainingMembers);
-            setmapTeams(!mapTeams);
-
+            if(res.status >=200 && res.status<300){
+                showToaster('success','User Deleted Successfull');
+                fetchExpense();
+            }
+            else{
+                showToaster('error','Something went wrong')
+            }
         } catch (error) {
             console.log(error);
         }

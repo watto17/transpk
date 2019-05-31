@@ -3,7 +3,7 @@ import {Formik} from 'formik';
 import Dashboard from '../../Dashboard/dashboard1';
 import {editCustomer , getpackages , updateCustomer , UpdatePaymentService} from '../services';
 import {showToaster} from '../../../utils/toastr';
-import {CustomersSchema} from '../validations';
+import {CustomersSchema} from '../../validations';
 
 export default function index(props) {
 let  uuid  = props.match.params.id; 

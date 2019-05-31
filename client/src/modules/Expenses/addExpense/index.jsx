@@ -2,6 +2,10 @@ import React , {useEffect , useState} from 'react';
 import {Formik} from 'formik';
 import Dashboard from '../../Dashboard/dashboard1';
 import {addExpenses} from '../services';
+import {ExpenseSchema} from '../../validations';
+import {showToaster} from '../../../utils/toastr';
+
+
  
 
 export default function index() {
@@ -22,16 +26,25 @@ export default function index() {
 
     async function addExpense(values, setSubmitting) {
         try {
-         console.log("-->",values,"-***-",setSubmitting,"<--")
         let today = new Date();
         values.month = today.getMonth()+1;
         values.paymentDate = today.getDate();
 
             let res = await addExpenses(values);
-            console.log("expense is",res)
-            setSubmitting(false);
+            if(res.status >=200 && res.status<300){
+              showToaster('success','Expenses added successfully');
+              setSubmitting(false);
+                setTimeout(() => {
+                  window.location.href='/expenses'
+                }, (2000));
+            
+            }
+              else {
+                showToaster('error','Something went wrong');
+              }
            
-        } catch (err) {
+        } 
+        catch (err) {
             console.log(err);
         }
     }
@@ -64,6 +77,8 @@ export default function index() {
       onSubmit={(values, { setSubmitting }) => {
         addExpense(values,setSubmitting)
       }}
+      validationSchema={ExpenseSchema}
+
     >
       {({
         values,

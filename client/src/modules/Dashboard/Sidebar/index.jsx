@@ -54,7 +54,7 @@ const sidebar=(props)=> {
                 </g>
               </svg></span><span className="kt-menu__link-text  list-style">Packages</span></Link></li>
 
-              <li className={`kt-menu__item ${pathname === '/addPackages' ? 'kt-menu__item--active' : '' } `}  aria-haspopup="true"><Link to='/addCustomers' className="kt-menu__link "><span className="kt-menu__link-icon">
+              <li className={`kt-menu__item ${pathname === '/addPackages' ? 'kt-menu__item--active' : '' } `}  aria-haspopup="true"><Link to='/addPackages' className="kt-menu__link "><span className="kt-menu__link-icon">
               <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" className="kt-svg-icon">
                 <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
                   <rect id="bound" x={0} y={0} width={24} height={24} />
@@ -67,7 +67,7 @@ const sidebar=(props)=> {
         <li className={`kt-menu__item ${(pathname === '/expenses' || pathname === '/team' || pathname === '/profile'  || pathname === '/team'  || pathname === '/billing'  || pathname === '/social_account' || pathname === '/referrals'  || pathname === '/support' ) ? 'kt-menu__item--active' : '' } `}  aria-haspopup="true"><Link to='/expenses' className="kt-menu__link "><span className="kt-menu__link-icon">
               <i className="flaticon-avatar" /></span><span className="kt-menu__link-text  list-style">Expenses</span></Link></li>
 
-              <li className={`kt-menu__item ${pathname === '/addExpenses' ? 'kt-menu__item--active' : '' } `}  aria-haspopup="true"><Link to='/addCustomers' className="kt-menu__link "><span className="kt-menu__link-icon">
+              <li className={`kt-menu__item ${pathname === '/addExpenses' ? 'kt-menu__item--active' : '' } `}  aria-haspopup="true"><Link to='/addExpenses' className="kt-menu__link "><span className="kt-menu__link-icon">
               <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" className="kt-svg-icon">
                 <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
                   <rect id="bound" x={0} y={0} width={24} height={24} />

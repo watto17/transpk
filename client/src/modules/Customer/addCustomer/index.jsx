@@ -3,7 +3,7 @@ import {Formik} from 'formik';
 import Dashboard from '../../Dashboard/dashboard1';
 import {getpackages , addCustomers} from '../services';
 import {showToaster} from '../../../utils/toastr';
-import {CustomersSchema} from '../validations';
+import {CustomersSchema} from '../../validations';
 
 
 export default function index() {
@@ -23,7 +23,7 @@ export default function index() {
     
 
     async function addCustomer(values, setSubmitting) {
-        try {
+        try { 
          
         let today = new Date();
         values.month = today.getMonth()+1;

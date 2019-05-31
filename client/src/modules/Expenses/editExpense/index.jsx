@@ -2,6 +2,8 @@ import React , {useEffect , useState} from 'react';
 import {Formik} from 'formik';
 import Dashboard from '../../Dashboard/dashboard1';
 import {editExpense, updateExpenses} from '../services';
+import {ExpenseSchema} from '../../validations';
+import {showToaster} from '../../../utils/toastr';
 
 
 export default function index(props) {
@@ -41,6 +43,15 @@ let  uuid  = props.match.params.id;
          
             let res = await updateExpenses(values,uuid);
             setSubmitting(false);
+            if(res.status >=200 && res.status < 300){
+              showToaster('success', 'Expenses updated successfully');
+              setTimeout(() => {
+                  window.location.href = '/expenses'
+              },2000);
+          }
+          else {
+              showToaster('error', 'Something went wrong');
+           }
            
         } catch (err) {
             console.log(err);
@@ -88,6 +99,7 @@ setPay(e.target.checked)
       onSubmit={(values, { setSubmitting }) => {
         UpdateCustomer(values,setSubmitting)
       }}
+      validationSchema={ExpenseSchema}
     >
       {({
         values,
